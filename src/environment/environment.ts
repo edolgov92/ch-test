@@ -23,6 +23,11 @@ export const environment = {
     windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 60000,
     max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
   },
+  services: {
+    target: {
+      graphqlUrl: process.env.TARGET_SERVICE_GRAPHQL_URL || 'http://localhost:4001/graphql',
+    },
+  },
 };
 
 const logger: Logger = new Logger('Environment');

@@ -4,6 +4,10 @@ import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 import { BaseEventDto } from './base-event.dto';
 
 export class ExtendedEventDto extends BaseEventDto {
+  constructor(data: ExtendedEventDto) {
+    super(data);
+  }
+
   @Expose()
   @IsNotEmpty()
   @IsString()

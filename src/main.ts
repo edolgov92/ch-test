@@ -16,7 +16,9 @@ async function bootstrap() {
   app.setGlobalPrefix('/api');
   app.use(helmet());
   app.use(rateLimit(environment.rateLimit));
-  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.useGlobalPipes(
+    new ValidationPipe({ transform: true, transformOptions: { excludeExtraneousValues: true } }),
+  );
 
   const options = new DocumentBuilder()
     .setTitle(environment.api.name)

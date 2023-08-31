@@ -3,7 +3,7 @@ import { Expose, Type } from 'class-transformer';
 import { IsDate, IsNotEmpty, IsString, IsUUID, MaxLength, MinLength } from 'class-validator';
 import { AbstractDto } from '../abstract';
 
-export class BaseEventDto extends AbstractDto {
+export class BaseEventDto extends AbstractDto<BaseEventDto> {
   @Expose()
   @IsNotEmpty()
   @IsString()
