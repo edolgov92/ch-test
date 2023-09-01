@@ -14,6 +14,7 @@ export const environment = {
     name: data.name,
     description: data.description,
     version: data.version,
+    url: process.env.API_URL || 'http://localhost:4000',
   },
   auth: {
     accessTokenExpiresInSec: parseInt(process.env.AUTH_ACCESS_TOKEN_EXPIRES_IN_SEC) || 60,
@@ -30,11 +31,13 @@ export const environment = {
   },
   services: {
     source: {
+      sendEventsIntervalMs: parseInt(process.env.SOURCE_SERVICE_SEND_EVENTS_INTERVAL_MS) || 1500,
+      testUserCredentials: process.env.SOURCE_SERVICE_TEST_USER_CREDENTIALS || '',
       testUsersData: process.env.SOURCE_SERVICE_TEST_USERS_DATA || '',
     },
     target: {
       graphqlUrl: process.env.TARGET_SERVICE_GRAPHQL_URL || 'http://localhost:4001/graphql',
-      requestRetries: parseInt(process.env.TARGET_SERVICE_REQUEST_RETRIES) || 1,
+      requestRetries: parseInt(process.env.TARGET_SERVICE_REQUEST_RETRIES) || 0,
       rateLimit: {
         intervalMs: parseInt(process.env.TARGET_SERVICE_RATE_LIMIT_INTERVAL_MS) || 3000,
         requestsPerInterval: parseInt(process.env.TARGET_SERVICE_RATE_LIMIT_REQUESTS_PER_INTERVAL) || 1,

@@ -30,10 +30,9 @@ export class TargetAppApiService extends WithLogger {
     };
     try {
       await this.client.request(mutation, variables);
+      this.logger.debug(`${extendedDto.id} | Extended event was sent to Target service successfully.`);
     } catch (ex) {
-      this.logger.error(ex);
-      // Igroring errors for testing purposes
+      this.logger.error(`Failed to send extended event to Target service`);
     }
-    this.logger.debug(`${extendedDto.id} | Extended data was sent to Target service successfully.`);
   }
 }

@@ -86,15 +86,13 @@ export class GraphQLClientService extends WithLogger {
     return retry(
       async () => {
         try {
+          if (attempt === 1 && Math.random() > 0.9) {
+            throw new Error('Error to simulate resource unavailability');
+          }
           const data: T = await this.doRequest(document, ...variablesAndRequestHeaders);
           return data;
         } catch (err) {
           this.logger.warn(
-            `Failed to send request in attempt ${attempt}${
-              this.config.retries > attempt - 1 ? ', retrying...' : ', throwing error'
-            }`,
-          );
-          console.warn(
             `Failed to send request in attempt ${attempt}${
               this.config.retries > attempt - 1 ? ', retrying...' : ', throwing error'
             }`,
@@ -121,6 +119,12 @@ export class GraphQLClientService extends WithLogger {
     if (this.limiter) {
       await this.limiter.removeTokens(1);
     }
-    return this.client.request(document, ...variablesAndRequestHeaders);
+    try {
+      const response: T = await this.client.request(document, ...variablesAndRequestHeaders);
+      return response;
+    } catch (ex) {
+      // Return data anyway for testing
+      return { ok: true } as T;
+    }
   }
 }

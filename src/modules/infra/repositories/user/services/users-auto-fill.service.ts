@@ -6,8 +6,10 @@ import { UserRepository } from '../interfaces';
 
 @Injectable()
 export class UsersAutoFillService {
-  constructor(@Inject(USER_REPOSITORY_TOKEN) private userRepository: UserRepository) {
-    this.fillUsers();
+  constructor(@Inject(USER_REPOSITORY_TOKEN) private userRepository: UserRepository) {}
+
+  async onModuleInit(): Promise<void> {
+    await this.fillUsers();
   }
 
   private async fillUsers(): Promise<void> {
