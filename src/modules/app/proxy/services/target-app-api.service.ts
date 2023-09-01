@@ -34,6 +34,6 @@ export class TargetAppApiService extends WithLogger {
       this.logger.error(ex);
       // Igroring errors for testing purposes
     }
-    this.logger.debug(`Extended data was sent to Target service successfully.`);
+    this.logger.debug(`${extendedDto.id} | Extended data was sent to Target service successfully.`);
   }
 }

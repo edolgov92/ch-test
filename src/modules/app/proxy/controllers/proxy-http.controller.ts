@@ -26,7 +26,7 @@ export class ProxyHttpController extends WithLogger {
     @UserTokenContext() userDto: UserTokenContextDto,
   ): Promise<void> {
     this.logger.debug(
-      `Received base event from user ${userDto?.authId} (${userDto?.id}) to handle in ` +
+      `${baseDto.id} | Received base event from user ${userDto?.authId} (${userDto?.id}) to handle in ` +
         `REST API, event data: ${baseDto}`,
     );
     this.client.emit(QueueEvent.BaseEventReceived, baseDto);

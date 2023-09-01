@@ -24,12 +24,14 @@ export class ProxyQueueController extends WithLogger {
   @UsePipes(new ValidationPipe({ transform: true }))
   @MessagePattern(QueueEvent.BaseEventReceived)
   async handleEvent(@Payload() baseDto: BaseEventDto): Promise<void> {
-    this.logger.debug(`Received based event to handle from QUEUE, event data: ${JSON.stringify(baseDto)}`);
+    this.logger.debug(
+      `${baseDto.id} | Received based event to handle from QUEUE, event data: ${JSON.stringify(baseDto)}`,
+    );
     const extendedDto: ExtendedEventDto = new ExtendedEventDto({
       ...baseDto,
       brand: 'Test brand',
     });
-    this.logger.debug(`Added brand ${extendedDto.brand} to dto data`);
+    this.logger.debug(`${baseDto.id} | Added brand ${extendedDto.brand} to dto data`);
     await this.targetAppApiService.sendExtendedEvent(extendedDto);
   }
 }

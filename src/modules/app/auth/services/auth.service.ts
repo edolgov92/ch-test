@@ -59,15 +59,11 @@ export class AuthService extends WithLogger {
   }
 
   getUserIpAddress(request: Request): string | undefined {
-    let ip: string | undefined;
-    if (request) {
-      if (request.headers && request.headers['x-forwarded-for']) {
-        ip = request.headers['x-forwarded-for'] as string;
-      }
-      if (!ip) {
-        ip = request.ip;
-      }
+    if (!request) {
+      return undefined;
     }
-    return ip;
+    // If the request passed through a proxy, the original IP address would be stored in 'x-forwarded-for' header
+    const forwardedIp: string | undefined = request.headers?.['x-forwarded-for'] as string;
+    return forwardedIp || request.ip;
   }
 }
