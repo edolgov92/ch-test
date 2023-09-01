@@ -10,9 +10,9 @@ export const UserTokenContext = createParamDecorator((data: unknown, context: Ex
       : undefined;
   if (token) {
     const decoded: string | jwt.JwtPayload = jwt.decode(token);
-    if (typeof decoded === 'object' && decoded.user) {
+    if (decoded && typeof decoded === 'object' && decoded.user) {
       return decoded.user;
     }
   }
-  return null;
+  return undefined;
 });

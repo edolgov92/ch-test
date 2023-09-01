@@ -1,9 +1,10 @@
-import { Injectable, Scope } from '@nestjs/common';
+import { Inject, Injectable, Scope } from '@nestjs/common';
 import * as retry from 'async-retry';
 import { GraphQLClient, RequestDocument, Variables } from 'graphql-request';
 import { VariablesAndRequestHeadersArgs } from 'graphql-request/build/esm/types';
 import { RateLimiter } from 'limiter';
 import { WithLogger } from '../../../common';
+import { GRAPHQL_CLIENT_TESTING_MODE_TOKEN } from '../constants';
 import { GraphQLClientConfig } from '../interfaces';
 
 @Injectable({ scope: Scope.TRANSIENT })
@@ -12,6 +13,10 @@ export class GraphQLClientService extends WithLogger {
   private limiter: RateLimiter;
 
   private config: GraphQLClientConfig = {};
+
+  constructor(@Inject(GRAPHQL_CLIENT_TESTING_MODE_TOKEN) private testingMode: boolean) {
+    super();
+  }
 
   setConfig(config: GraphQLClientConfig): void {
     if (typeof config.endpoint === 'string' && config.endpoint !== this.config.endpoint) {
@@ -86,7 +91,7 @@ export class GraphQLClientService extends WithLogger {
     return retry(
       async () => {
         try {
-          if (attempt === 1 && Math.random() > 0.9) {
+          if (this.testingMode && attempt === 1 && Math.random() > 0.9) {
             throw new Error('Error to simulate resource unavailability');
           }
           const data: T = await this.doRequest(document, ...variablesAndRequestHeaders);
@@ -123,8 +128,12 @@ export class GraphQLClientService extends WithLogger {
       const response: T = await this.client.request(document, ...variablesAndRequestHeaders);
       return response;
     } catch (ex) {
-      // Return data anyway for testing
-      return { ok: true } as T;
+      if (this.testingMode) {
+        // Return data anyway for testing
+        return { ok: true } as T;
+      } else {
+        throw ex;
+      }
     }
   }
 }

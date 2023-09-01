@@ -10,6 +10,9 @@ const data: { name: string; description: string; version: string } = JSON.parse(
 export const environment = {
   port: process.env.PORT || 4000,
   containerAppReplicaName: process.env.CONTAINER_APP_REPLICA_NAME || shortUUID.generate(),
+  graphQLClientTestingMode: process.env.GRAPHQL_CLIENT_TESTING_MODE
+    ? process.env.GRAPHQL_CLIENT_TESTING_MODE === 'true'
+    : true,
   api: {
     name: data.name,
     description: data.description,

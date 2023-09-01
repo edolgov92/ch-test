@@ -21,7 +21,7 @@ class TestGraphQLClientService extends GraphQLClientService {
     private graphQLClient: GraphQLClient,
     private rateLimiter: RateLimiter,
   ) {
-    super();
+    super(false);
   }
 
   protected createGraphQLClient(): GraphQLClient {
