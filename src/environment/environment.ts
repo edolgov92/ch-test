@@ -15,6 +15,11 @@ export const environment = {
     description: data.description,
     version: data.version,
   },
+  auth: {
+    accessTokenExpiresInSec: parseInt(process.env.AUTH_ACCESS_TOKEN_EXPIRES_IN_SEC) || 60,
+    accessTokenSecret: process.env.AUTH_ACCESS_TOKEN_SECRET || 'test-secret',
+    refreshTokenExpiresInSec: parseInt(process.env.AUTH_REFRESH_TOKEN_EXPIRES_IN_SEC) || 120,
+  },
   queue: {
     type: (process.env.QUEUE_TYPE as QueueType) || QueueType.InMemory,
     url: process.env.QUEUE_URL || '',
@@ -24,6 +29,9 @@ export const environment = {
     requestsPerInterval: parseInt(process.env.RATE_LIMIT_REQUESTS_PER_INTERVAL) || 100,
   },
   services: {
+    source: {
+      testUsersData: process.env.SOURCE_SERVICE_TEST_USERS_DATA || '',
+    },
     target: {
       graphqlUrl: process.env.TARGET_SERVICE_GRAPHQL_URL || 'http://localhost:4001/graphql',
       requestRetries: parseInt(process.env.TARGET_SERVICE_REQUEST_RETRIES) || 1,

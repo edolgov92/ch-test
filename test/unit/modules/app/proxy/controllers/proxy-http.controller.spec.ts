@@ -1,7 +1,7 @@
 import { ClientProxy } from '@nestjs/microservices';
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProxyHttpController } from '../../../../../../src/modules/app/proxy/controllers';
-import { BaseEventDto } from '../../../../../../src/modules/common';
+import { BaseEventDto, UserTokenContextDto } from '../../../../../../src/modules/common';
 import { QUEUE_CLIENT_TOKEN } from '../../../../../../src/modules/infra';
 
 const BASE_DTO: BaseEventDto = new BaseEventDto({
@@ -9,6 +9,10 @@ const BASE_DTO: BaseEventDto = new BaseEventDto({
   name: 'Test name',
   body: 'Test body',
   timestamp: new Date(),
+});
+const USER_TOKEN_CONTEXT_DTO: UserTokenContextDto = new UserTokenContextDto({
+  id: 'usr_5Qv1ARJMWJnD1hTdbNgiQf',
+  authId: 'source_user',
 });
 
 describe('ProxyHttpController', () => {
@@ -31,7 +35,7 @@ describe('ProxyHttpController', () => {
   });
 
   it('should emit BaseEventReceived queue event', async () => {
-    await proxyHttpController.handleEvent(BASE_DTO);
+    await proxyHttpController.handleEvent(BASE_DTO, USER_TOKEN_CONTEXT_DTO);
     expect(queueClient.emit).toHaveBeenCalledTimes(1);
   });
 });

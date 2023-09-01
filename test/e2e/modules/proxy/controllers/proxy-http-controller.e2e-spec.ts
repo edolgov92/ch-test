@@ -1,7 +1,7 @@
-import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { CanActivate, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
-import { BaseEventDto, ProxyModule } from '../../../../../src/modules';
+import { AuthModule, BaseEventDto, JwtAuthGuard, ProxyModule } from '../../../../../src/modules';
 
 const BASE_DTO: BaseEventDto = new BaseEventDto({
   id: 'b33bad7c-837d-4a5b-9f56-20d46f5c571d',
@@ -14,9 +14,13 @@ describe('ProxyHttpController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
+    const mockAuthGuard: CanActivate = { canActivate: jest.fn(() => true) };
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ProxyModule],
-    }).compile();
+      imports: [AuthModule, ProxyModule],
+    })
+      .overrideGuard(JwtAuthGuard)
+      .useValue(mockAuthGuard)
+      .compile();
 
     app = module.createNestApplication();
     app.useGlobalPipes(new ValidationPipe({ transform: true }));

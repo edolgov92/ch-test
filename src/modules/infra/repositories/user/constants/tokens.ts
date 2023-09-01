@@ -1,0 +1,1 @@
+export const USER_REPOSITORY_TOKEN: string = 'USER_REPOSITORY_TOKEN';
