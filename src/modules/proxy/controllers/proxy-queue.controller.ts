@@ -1,7 +1,7 @@
 import { Controller, Inject, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ClientProxy, MessagePattern, Payload } from '@nestjs/microservices';
 import { BaseEventDto, ExtendedEventDto, QueueEvent, WithLogger } from '../../common';
-import { QUEUE_CLIENT_TOKEN } from '../constants';
+import { QUEUE_CLIENT_TOKEN } from '../../queue';
 import { TargetAppApiService } from '../services';
 
 @Controller()

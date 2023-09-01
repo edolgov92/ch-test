@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as shortUUID from 'short-uuid';
-import { QueueType } from '../modules/common/enums';
+import { QueueType } from '../modules/queue/enums';
 
 const data: { name: string; description: string; version: string } = JSON.parse(
   fs.readFileSync('package.json').toString(),
@@ -16,7 +16,7 @@ export const environment = {
     version: data.version,
   },
   queue: {
-    type: (process.env.QUEUE_TYPE as QueueType) || '',
+    type: (process.env.QUEUE_TYPE as QueueType) || QueueType.InMemory,
     url: process.env.QUEUE_URL || '',
   },
   rateLimit: {

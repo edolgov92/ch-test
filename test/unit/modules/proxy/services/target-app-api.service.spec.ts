@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { GraphQLClient } from 'graphql-request';
-import { ExtendedEventDto } from '../../../../../src/modules';
+import { ExtendedEventDto } from '../../../../../src/modules/common';
 import { TargetAppApiService } from '../../../../../src/modules/proxy/services';
 
 const EXTENDED_DTO: ExtendedEventDto = new ExtendedEventDto({

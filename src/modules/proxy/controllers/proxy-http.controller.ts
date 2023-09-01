@@ -2,7 +2,7 @@ import { Body, Controller, HttpCode, HttpStatus, Inject, Post } from '@nestjs/co
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiResponse } from '@nestjs/swagger';
 import { BaseEventDto, QueueEvent, WithLogger } from '../../common';
-import { QUEUE_CLIENT_TOKEN } from '../constants';
+import { QUEUE_CLIENT_TOKEN } from '../../queue';
 
 @Controller('events')
 export class ProxyHttpController extends WithLogger {

@@ -6,11 +6,11 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { environment } from './environment';
-import { getEnvironmentMicroserviceConfig } from './modules/common';
+import { getMicroserviceStrategyEnvironmentConfig } from './modules/queue';
 
 async function bootstrap() {
   const app: INestApplication = await NestFactory.create(AppModule);
-  app.connectMicroservice(getEnvironmentMicroserviceConfig());
+  app.connectMicroservice(getMicroserviceStrategyEnvironmentConfig());
 
   app.enableCors();
   app.setGlobalPrefix('/api');
