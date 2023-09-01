@@ -1,34 +1,54 @@
-import { Inject, Injectable, Scope } from '@nestjs/common';
+import { Injectable, Scope } from '@nestjs/common';
 import * as retry from 'async-retry';
 import { GraphQLClient, RequestDocument, Variables } from 'graphql-request';
 import { VariablesAndRequestHeadersArgs } from 'graphql-request/build/esm/types';
 import { RateLimiter } from 'limiter';
 import { WithLogger } from '../../../common';
-import { GRAPHQL_CLIENT_TYPE_TOKEN } from '../constants';
 import { GraphQLClientConfig } from '../interfaces';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export class GraphQLClientService extends WithLogger {
   private client: GraphQLClient;
-  private endpoint: string = '';
   private limiter: RateLimiter;
-  private retries: number = 0;
 
-  constructor(@Inject(GRAPHQL_CLIENT_TYPE_TOKEN) private clientType: typeof GraphQLClient) {
-    super();
-    this.client = new clientType(this.endpoint);
-  }
+  private config: GraphQLClientConfig = {};
 
-  updateConfig(config: GraphQLClientConfig): void {
-    this.endpoint = config.endpoint;
-    this.client.setEndpoint(this.endpoint);
-    if (config.rateLimitIntervalMs || config.rateLimitRequestsPerInterval) {
-      const interval: number = config.rateLimitIntervalMs || 1000;
-      const tokensPerInterval: number = config.rateLimitRequestsPerInterval || 1;
-      this.limiter = new RateLimiter({ interval, tokensPerInterval });
+  setConfig(config: GraphQLClientConfig): void {
+    if (typeof config.endpoint === 'string' && config.endpoint !== this.config.endpoint) {
+      this.config.endpoint = config.endpoint;
+      if (this.client) {
+        this.client.setEndpoint(this.config.endpoint);
+      } else {
+        this.client = this.createGraphQLClient(this.config.endpoint);
+      }
     }
-    if (config.retries) {
-      this.retries = config.retries;
+    let rateLimiterConfigUpdated: boolean = false;
+    if (
+      typeof config.rateLimitIntervalMs === 'number' &&
+      config.rateLimitIntervalMs !== this.config.rateLimitIntervalMs
+    ) {
+      this.config.rateLimitIntervalMs = config.rateLimitIntervalMs;
+      rateLimiterConfigUpdated = true;
+    }
+    if (
+      typeof config.rateLimitRequestsPerInterval === 'number' &&
+      config.rateLimitRequestsPerInterval !== this.config.rateLimitRequestsPerInterval
+    ) {
+      this.config.rateLimitRequestsPerInterval = config.rateLimitRequestsPerInterval;
+      rateLimiterConfigUpdated = true;
+    }
+    if (rateLimiterConfigUpdated) {
+      if (this.config.rateLimitIntervalMs && this.config.rateLimitRequestsPerInterval) {
+        this.limiter = this.createRateLimiter(
+          this.config.rateLimitIntervalMs,
+          this.config.rateLimitRequestsPerInterval,
+        );
+      } else {
+        this.limiter = undefined;
+      }
+    }
+    if (typeof config.retries === 'number' && config.retries !== this.config.retries) {
+      this.config.retries = config.retries;
     }
   }
 
@@ -36,12 +56,26 @@ export class GraphQLClientService extends WithLogger {
     document: RequestDocument,
     ...variablesAndRequestHeaders: VariablesAndRequestHeadersArgs<V>
   ): Promise<T> {
-    if (!this.endpoint) {
+    if (!this.config.endpoint) {
       throw new Error('Endpoint is not configured');
     }
-    return this.retries
+    return this.config.retries > 0
       ? this.retryRequest(document, ...variablesAndRequestHeaders)
       : this.doRequest(document, ...variablesAndRequestHeaders);
+  }
+
+  protected createGraphQLClient(endpoint: string): GraphQLClient {
+    return new GraphQLClient(endpoint);
+  }
+
+  protected createRateLimiter(
+    rateLimitIntervalMs: number,
+    rateLimitRequestsPerInterval: number,
+  ): RateLimiter {
+    return new RateLimiter({
+      interval: rateLimitIntervalMs,
+      tokensPerInterval: rateLimitRequestsPerInterval,
+    });
   }
 
   private retryRequest<T, V extends Variables = Variables>(
@@ -57,7 +91,12 @@ export class GraphQLClientService extends WithLogger {
         } catch (err) {
           this.logger.warn(
             `Failed to send request in attempt ${attempt}${
-              this.retries > attempt - 1 ? ', retrying...' : ', throwing error'
+              this.config.retries > attempt - 1 ? ', retrying...' : ', throwing error'
+            }`,
+          );
+          console.warn(
+            `Failed to send request in attempt ${attempt}${
+              this.config.retries > attempt - 1 ? ', retrying...' : ', throwing error'
             }`,
           );
           throw err;
@@ -66,7 +105,7 @@ export class GraphQLClientService extends WithLogger {
         }
       },
       {
-        retries: this.retries, // number of retries before giving up
+        retries: this.config.retries, // number of retries before giving up
         factor: 2, // exponential factor
         minTimeout: 1 * 1000, // the number of milliseconds before starting the first retry
         maxTimeout: 60 * 1000, // the maximum number of milliseconds between two retries

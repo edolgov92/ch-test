@@ -1,5 +1,5 @@
 export interface GraphQLClientConfig {
-  endpoint: string;
+  endpoint?: string;
   rateLimitIntervalMs?: number;
   rateLimitRequestsPerInterval?: number;
   retries?: number;

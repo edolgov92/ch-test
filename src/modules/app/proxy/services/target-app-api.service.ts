@@ -9,7 +9,7 @@ export class TargetAppApiService extends WithLogger {
   constructor(private readonly client: GraphQLClientService) {
     super();
 
-    this.client.updateConfig({
+    this.client.setConfig({
       endpoint: environment.services.target.graphqlUrl,
       rateLimitIntervalMs: environment.services.target.rateLimit.intervalMs,
       rateLimitRequestsPerInterval: environment.services.target.rateLimit.requestsPerInterval,

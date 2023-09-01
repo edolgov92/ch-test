@@ -1,3 +1,4 @@
+import { ClientProxy } from '@nestjs/microservices';
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProxyHttpController } from '../../../../../../src/modules/app/proxy/controllers';
 import { BaseEventDto } from '../../../../../../src/modules/common';
@@ -9,18 +10,19 @@ const BASE_DTO: BaseEventDto = new BaseEventDto({
   body: 'Test body',
   timestamp: new Date(),
 });
-const QUEUE_CLIENT = { emit: jest.fn() };
 
 describe('ProxyHttpController', () => {
   let proxyHttpController: ProxyHttpController;
+  let queueClient: Partial<ClientProxy>;
 
   beforeEach(async () => {
+    queueClient = { emit: jest.fn() };
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ProxyHttpController],
       providers: [
         {
           provide: QUEUE_CLIENT_TOKEN,
-          useValue: QUEUE_CLIENT,
+          useValue: queueClient,
         },
       ],
     }).compile();
@@ -29,8 +31,7 @@ describe('ProxyHttpController', () => {
   });
 
   it('should emit BaseEventReceived queue event', async () => {
-    const spy: jest.SpyInstance = jest.spyOn(QUEUE_CLIENT, 'emit');
     await proxyHttpController.handleEvent(BASE_DTO);
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(queueClient.emit).toHaveBeenCalledTimes(1);
   });
 });

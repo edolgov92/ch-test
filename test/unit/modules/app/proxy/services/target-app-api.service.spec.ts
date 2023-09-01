@@ -1,4 +1,4 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { TargetAppApiService } from '../../../../../../src/modules/app/proxy/services';
 import { ExtendedEventDto } from '../../../../../../src/modules/common';
 import { GraphQLClientService } from '../../../../../../src/modules/infra';
@@ -10,27 +10,26 @@ const EXTENDED_DTO: ExtendedEventDto = new ExtendedEventDto({
   timestamp: new Date(),
   brand: 'Test brand',
 });
-const GRAPHQL_CLIENT: Partial<GraphQLClientService> = { updateConfig: jest.fn(), request: jest.fn() };
 
 describe('TargetAppApiService', () => {
+  let graphQLClientService: Partial<GraphQLClientService>;
   let targetAppApiService: TargetAppApiService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    graphQLClientService = { setConfig: jest.fn(), request: jest.fn() };
+    targetAppApiService = new TargetAppApiService(graphQLClientService as GraphQLClientService);
+    await Test.createTestingModule({
       providers: [
         {
           provide: TargetAppApiService,
-          useValue: new TargetAppApiService(GRAPHQL_CLIENT as GraphQLClientService),
+          useValue: targetAppApiService,
         },
       ],
     }).compile();
-
-    targetAppApiService = module.get<TargetAppApiService>(TargetAppApiService);
   });
 
   it('should send extended event using Graphql to Target service successfuly', async () => {
-    const spy: jest.SpyInstance = jest.spyOn(GRAPHQL_CLIENT, 'request');
     await targetAppApiService.sendExtendedEvent(EXTENDED_DTO);
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(graphQLClientService.request).toHaveBeenCalledTimes(1);
   });
 });
