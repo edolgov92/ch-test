@@ -6,7 +6,7 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { environment } from './environment';
-import { getMicroserviceStrategyEnvironmentConfig } from './modules/queue';
+import { getMicroserviceStrategyEnvironmentConfig } from './modules/infra';
 
 async function bootstrap() {
   const app: INestApplication = await NestFactory.create(AppModule);
@@ -15,7 +15,9 @@ async function bootstrap() {
   app.enableCors();
   app.setGlobalPrefix('/api');
   app.use(helmet());
-  app.use(rateLimit(environment.rateLimit));
+  app.use(
+    rateLimit({ windowMs: environment.rateLimit.intervalMs, max: environment.rateLimit.requestsPerInterval }),
+  );
   app.useGlobalPipes(
     new ValidationPipe({ transform: true, transformOptions: { excludeExtraneousValues: true } }),
   );

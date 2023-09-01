@@ -1,8 +1,8 @@
 import { Body, Controller, HttpCode, HttpStatus, Inject, Post } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiResponse } from '@nestjs/swagger';
-import { BaseEventDto, QueueEvent, WithLogger } from '../../common';
-import { QUEUE_CLIENT_TOKEN } from '../../queue';
+import { BaseEventDto, QueueEvent, WithLogger } from '../../../common';
+import { QUEUE_CLIENT_TOKEN } from '../../../infra';
 
 @Controller('events')
 export class ProxyHttpController extends WithLogger {

@@ -1,4 +1,4 @@
-import { environment } from '../../../environment';
+import { environment } from '../../../../environment';
 import { AbstractTransport } from '../classes';
 import { MICROSERVICE_TRANSPORTS_MAP } from '../constants';
 import { QueueType } from '../enums';

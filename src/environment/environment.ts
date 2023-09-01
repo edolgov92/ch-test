@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as shortUUID from 'short-uuid';
-import { QueueType } from '../modules/queue/enums';
+import { QueueType } from '../modules/infra/queue/enums';
 
 const data: { name: string; description: string; version: string } = JSON.parse(
   fs.readFileSync('package.json').toString(),
@@ -20,12 +20,17 @@ export const environment = {
     url: process.env.QUEUE_URL || '',
   },
   rateLimit: {
-    windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 60000,
-    max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
+    intervalMs: parseInt(process.env.RATE_LIMIT_INTERVAL_MS) || 60000,
+    requestsPerInterval: parseInt(process.env.RATE_LIMIT_REQUESTS_PER_INTERVAL) || 100,
   },
   services: {
     target: {
       graphqlUrl: process.env.TARGET_SERVICE_GRAPHQL_URL || 'http://localhost:4001/graphql',
+      requestRetries: parseInt(process.env.TARGET_SERVICE_REQUEST_RETRIES) || 1,
+      rateLimit: {
+        intervalMs: parseInt(process.env.TARGET_SERVICE_RATE_LIMIT_INTERVAL_MS) || 3000,
+        requestsPerInterval: parseInt(process.env.TARGET_SERVICE_RATE_LIMIT_REQUESTS_PER_INTERVAL) || 1,
+      },
     },
   },
 };

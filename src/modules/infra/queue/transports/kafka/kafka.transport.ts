@@ -1,6 +1,6 @@
 import { Transport } from '@nestjs/microservices';
 import { ConsumerConfig, KafkaConfig, logLevel } from 'kafkajs';
-import { environment } from '../../../../environment';
+import { environment } from '../../../../../environment';
 import { AbstractTransport } from '../../classes';
 import { MicroserviceClientConfig, MicroserviceStrategyConfig } from '../../interfaces';
 

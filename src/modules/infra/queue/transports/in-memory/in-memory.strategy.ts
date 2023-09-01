@@ -1,4 +1,3 @@
-// in-memory-broker.transport.ts
 import { CustomTransportStrategy, MessageHandler, Server } from '@nestjs/microservices';
 import { InMemoryQueueMessage } from '../../interfaces';
 import { InMemoryClient } from './in-memory.client';

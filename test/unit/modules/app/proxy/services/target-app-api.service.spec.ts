@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GraphQLClient } from 'graphql-request';
-import { ExtendedEventDto } from '../../../../../src/modules/common';
-import { TargetAppApiService } from '../../../../../src/modules/proxy/services';
+import { TargetAppApiService } from '../../../../../../src/modules/app/proxy/services';
+import { ExtendedEventDto } from '../../../../../../src/modules/common';
+import { GraphQLClientService } from '../../../../../../src/modules/infra';
 
 const EXTENDED_DTO: ExtendedEventDto = new ExtendedEventDto({
   id: 'b33bad7c-837d-4a5b-9f56-20d46f5c571d',
@@ -10,15 +10,18 @@ const EXTENDED_DTO: ExtendedEventDto = new ExtendedEventDto({
   timestamp: new Date(),
   brand: 'Test brand',
 });
-const GRAPHQL_CLIENT: Partial<GraphQLClient> = { request: jest.fn() };
+const GRAPHQL_CLIENT: Partial<GraphQLClientService> = { updateConfig: jest.fn(), request: jest.fn() };
 
-describe('ProxyHttpController', () => {
+describe('TargetAppApiService', () => {
   let targetAppApiService: TargetAppApiService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        { provide: TargetAppApiService, useValue: new TargetAppApiService(GRAPHQL_CLIENT as GraphQLClient) },
+        {
+          provide: TargetAppApiService,
+          useValue: new TargetAppApiService(GRAPHQL_CLIENT as GraphQLClientService),
+        },
       ],
     }).compile();
 

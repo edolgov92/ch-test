@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BaseEventDto } from '../../../../../src/modules/common';
-import { ProxyHttpController } from '../../../../../src/modules/proxy/controllers';
-import { QUEUE_CLIENT_TOKEN } from '../../../../../src/modules/queue';
+import { ProxyHttpController } from '../../../../../../src/modules/app/proxy/controllers';
+import { BaseEventDto } from '../../../../../../src/modules/common';
+import { QUEUE_CLIENT_TOKEN } from '../../../../../../src/modules/infra';
 
 const BASE_DTO: BaseEventDto = new BaseEventDto({
   id: 'b33bad7c-837d-4a5b-9f56-20d46f5c571d',
