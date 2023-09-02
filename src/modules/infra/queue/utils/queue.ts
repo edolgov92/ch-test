@@ -1,8 +1,8 @@
 import { ConfigService } from '@nestjs/config';
-import { Environment, environment, QueueConfig } from '../../../../environment';
+import { Environment, QueueConfig } from '../../../../environment';
+import { QueueType } from '../../../common';
 import { AbstractTransport } from '../classes';
 import { MICROSERVICE_TRANSPORTS_MAP } from '../constants';
-import { QueueType } from '../enums';
 import { MicroserviceClientConfig, MicroserviceStrategyConfig } from '../interfaces';
 import { TransportConstructor } from '../types';
 

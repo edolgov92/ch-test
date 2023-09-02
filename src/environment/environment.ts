@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as shortUUID from 'short-uuid';
-import { QueueType } from '../modules/infra/queue/enums';
+import { QueueType } from '../modules/common/enums';
 import { Environment } from './interfaces/environment.interface';
 
 const data: { name: string; description: string; version: string } = JSON.parse(

@@ -1,4 +1,4 @@
-import { QueueType } from '../../modules/infra/queue/enums';
+import { QueueType } from '../../modules/common/enums';
 
 export interface ApiConfig {
   name: string;

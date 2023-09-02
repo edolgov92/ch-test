@@ -1,4 +1,4 @@
-import { QueueType } from '../enums';
+import { QueueType } from '../../../common';
 import { InMemoryTransport, KafkaTransport } from '../transports';
 import { TransportConstructor } from '../types';
 
