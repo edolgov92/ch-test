@@ -1,20 +1,25 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { environment } from '../../../../../environment';
+import { ConfigService } from '@nestjs/config';
+import { Environment, ProxyServiceConfig, ServicesConfig } from '../../../../../environment';
 import { User } from '../../../../common';
 import { USER_REPOSITORY_TOKEN } from '../constants';
 import { UserRepository } from '../interfaces';
 
 @Injectable()
 export class UsersAutoFillService {
-  constructor(@Inject(USER_REPOSITORY_TOKEN) private userRepository: UserRepository) {}
+  constructor(
+    private configService: ConfigService<Environment>,
+    @Inject(USER_REPOSITORY_TOKEN) private userRepository: UserRepository,
+  ) {}
 
   async onModuleInit(): Promise<void> {
     await this.fillUsers();
   }
 
   private async fillUsers(): Promise<void> {
-    if (environment.services.source.testUsersData) {
-      const entities: User[] = JSON.parse(environment.services.source.testUsersData);
+    const proxyServiceConfig: ProxyServiceConfig = this.configService.get<ServicesConfig>('services').proxy;
+    if (proxyServiceConfig.testUsersData) {
+      const entities: User[] = JSON.parse(proxyServiceConfig.testUsersData);
       await this.userRepository.saveUsers(entities);
     }
   }

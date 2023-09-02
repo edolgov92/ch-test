@@ -1,10 +1,11 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { AxiosResponse } from 'axios';
 import { plainToClass } from 'class-transformer';
 import { BehaviorSubject, filter, firstValueFrom, take } from 'rxjs';
 import { uuid } from 'short-uuid';
-import { environment } from '../../../../environment';
+import { ApiConfig, Environment, ServicesConfig, SourceServiceConfig } from '../../../../environment';
 import {
   BaseEventDto,
   UserSessionCreationDto,
@@ -17,17 +18,26 @@ const REQUESTS_IN_CHUNK: number = 10;
 
 @Injectable()
 export class SourceMockService extends WithLogger {
+  private apiUrl: string;
   private userSessionCreationDto: UserSessionCreationDto;
 
   private userSessionDto$: BehaviorSubject<UserSessionDto | undefined> = new BehaviorSubject(undefined);
 
-  constructor(private httpService: HttpService) {
+  constructor(
+    private configService: ConfigService<Environment>,
+    private httpService: HttpService,
+  ) {
     super();
+
+    const apiConfig: ApiConfig = this.configService.get('api');
+    this.apiUrl = apiConfig.url;
   }
 
   onApplicationBootstrap(): void {
-    this.userSessionCreationDto = environment.services.source.testUserCredentials
-      ? JSON.parse(environment.services.source.testUserCredentials)
+    const sourceServiceConfig: SourceServiceConfig =
+      this.configService.get<ServicesConfig>('services').source;
+    this.userSessionCreationDto = sourceServiceConfig.testUserCredentials
+      ? JSON.parse(sourceServiceConfig.testUserCredentials)
       : undefined;
     if (this.userSessionCreationDto) {
       this.startEventsProducer();
@@ -60,21 +70,21 @@ export class SourceMockService extends WithLogger {
   private async startEventsProducer(): Promise<void> {
     await this.createUserSession();
     let requestsDoneInChunk: number = 0;
+    const servicesConfig: ServicesConfig = this.configService.get('services');
     while (true) {
       if (requestsDoneInChunk === REQUESTS_IN_CHUNK) {
         requestsDoneInChunk = 0;
         // Sleep to let Target service process our events from queue
         let sleepMs: number =
-          (environment.services.target.rateLimit.intervalMs /
-            environment.services.target.rateLimit.requestsPerInterval) *
+          (servicesConfig.target.rateLimit.intervalMs / servicesConfig.target.rateLimit.requestsPerInterval) *
             REQUESTS_IN_CHUNK -
-          environment.services.source.sendEventsIntervalMs * REQUESTS_IN_CHUNK;
+          servicesConfig.source.sendEventsIntervalMs * REQUESTS_IN_CHUNK;
         sleepMs = Math.round(sleepMs * 2);
         if (sleepMs > 0) {
           await this.sleep(sleepMs);
         }
       } else {
-        await this.sleep(environment.services.source.sendEventsIntervalMs);
+        await this.sleep(servicesConfig.source.sendEventsIntervalMs);
       }
       this.userSessionDto$
         .pipe(
@@ -91,7 +101,7 @@ export class SourceMockService extends WithLogger {
   private async createUserSession(): Promise<void> {
     try {
       const response: AxiosResponse<UserSessionDto> = await firstValueFrom(
-        this.httpService.post(`${environment.api.url}/user-sessions`, this.userSessionCreationDto),
+        this.httpService.post(`${this.apiUrl}/user-sessions`, this.userSessionCreationDto),
       );
       if (!response.data) {
         throw new Error('Create user session response data is not valid');
@@ -108,7 +118,7 @@ export class SourceMockService extends WithLogger {
     try {
       const response: AxiosResponse<UserSessionDto> = await firstValueFrom(
         this.httpService.post(
-          `${environment.api.url}/user-sessions/refresh`,
+          `${this.apiUrl}/user-sessions/refresh`,
           new UserSessionRefreshDto({ refreshToken }),
         ),
       );
@@ -139,7 +149,7 @@ export class SourceMockService extends WithLogger {
           }, 500);
         }),
         firstValueFrom(
-          this.httpService.post(`${environment.api.url}/events`, dto, {
+          this.httpService.post(`${this.apiUrl}/events`, dto, {
             headers: { Authorization: `Bearer ${this.userSessionDto$.value.accessToken}` },
           }),
         ),

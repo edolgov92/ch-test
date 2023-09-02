@@ -1,6 +1,8 @@
 import { CanActivate, INestApplication, ValidationPipe } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
+import { environment } from '../../../../../src/environment';
 import { AuthModule, BaseEventDto, JwtAuthGuard, ProxyModule } from '../../../../../src/modules';
 
 const BASE_DTO: BaseEventDto = new BaseEventDto({
@@ -16,7 +18,14 @@ describe('ProxyHttpController (e2e)', () => {
   beforeEach(async () => {
     const mockAuthGuard: CanActivate = { canActivate: jest.fn(() => true) };
     const module: TestingModule = await Test.createTestingModule({
-      imports: [AuthModule, ProxyModule],
+      imports: [
+        AuthModule,
+        ConfigModule.forRoot({
+          isGlobal: true,
+          load: [() => environment],
+        }),
+        ProxyModule,
+      ],
     })
       .overrideGuard(JwtAuthGuard)
       .useValue(mockAuthGuard)

@@ -2,13 +2,14 @@ import { Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as shortUUID from 'short-uuid';
 import { QueueType } from '../modules/infra/queue/enums';
+import { Environment } from './interfaces/environment.interface';
 
 const data: { name: string; description: string; version: string } = JSON.parse(
   fs.readFileSync('package.json').toString(),
 );
 
-export const environment = {
-  port: process.env.PORT || 4000,
+export const environment: Environment = {
+  port: parseInt(process.env.PORT) || 4000,
   containerAppReplicaName: process.env.CONTAINER_APP_REPLICA_NAME || shortUUID.generate(),
   graphQLClientTestingMode: process.env.GRAPHQL_CLIENT_TESTING_MODE
     ? process.env.GRAPHQL_CLIENT_TESTING_MODE === 'true'
@@ -33,10 +34,12 @@ export const environment = {
     requestsPerInterval: parseInt(process.env.RATE_LIMIT_REQUESTS_PER_INTERVAL) || 100,
   },
   services: {
+    proxy: {
+      testUsersData: process.env.PROXY_SERVICE_TEST_USERS_DATA || '',
+    },
     source: {
       sendEventsIntervalMs: parseInt(process.env.SOURCE_SERVICE_SEND_EVENTS_INTERVAL_MS) || 1500,
       testUserCredentials: process.env.SOURCE_SERVICE_TEST_USER_CREDENTIALS || '',
-      testUsersData: process.env.SOURCE_SERVICE_TEST_USERS_DATA || '',
     },
     target: {
       graphqlUrl: process.env.TARGET_SERVICE_GRAPHQL_URL || 'http://localhost:4001/graphql',

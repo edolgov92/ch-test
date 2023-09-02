@@ -1,19 +1,24 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Request } from 'express';
 import * as RandToken from 'rand-token';
-import { environment } from '../../../../environment';
+import { AuthConfig, Environment } from '../../../../environment';
 import { User, UserSession, UserSessionDto, UserTokenContextDto, WithLogger } from '../../../common';
 import { USER_REPOSITORY_TOKEN, UserRepository } from '../../../infra';
 
 @Injectable()
 export class AuthService extends WithLogger {
+  private authConfig: AuthConfig;
+
   constructor(
+    private configService: ConfigService<Environment>,
     private jwtService: JwtService,
     @Inject(USER_REPOSITORY_TOKEN) private userRepository: UserRepository,
   ) {
     super();
+    this.authConfig = this.configService.get('auth');
   }
 
   async checkSecret(dtoSecret: string, storedSecret: string): Promise<boolean> {
@@ -24,14 +29,17 @@ export class AuthService extends WithLogger {
     const now: Date = new Date();
     const accessTokenExpireDateTime: Date = new Date(now);
     accessTokenExpireDateTime.setSeconds(
-      accessTokenExpireDateTime.getSeconds() + environment.auth.accessTokenExpiresInSec,
+      accessTokenExpireDateTime.getSeconds() + this.authConfig.accessTokenExpiresInSec,
     );
     const refreshTokenExpireDateTime: Date = new Date(now);
     refreshTokenExpireDateTime.setSeconds(
-      refreshTokenExpireDateTime.getSeconds() + environment.auth.refreshTokenExpiresInSec,
+      refreshTokenExpireDateTime.getSeconds() + this.authConfig.refreshTokenExpiresInSec,
     );
     const tokenContext: UserTokenContextDto = { id: user.id, authId: user.authId };
-    const accessToken: string = this.jwtService.sign({ user: tokenContext });
+    const accessToken: string = this.jwtService.sign(
+      { user: tokenContext },
+      { secret: this.authConfig.accessTokenSecret, expiresIn: this.authConfig.accessTokenExpiresInSec },
+    );
     const refreshToken: string = RandToken.uid(256);
     const userSession: UserSession = new UserSession({
       accessToken,

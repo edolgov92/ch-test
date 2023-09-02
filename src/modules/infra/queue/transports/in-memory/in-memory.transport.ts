@@ -4,22 +4,22 @@ import { InMemoryClient } from './in-memory.client';
 import { InMemoryTransportStrategy } from './in-memory.strategy';
 
 export class InMemoryTransport extends AbstractTransport {
-  private static clientConfig: MicroserviceClientConfig = {
+  private clientConfig: MicroserviceClientConfig = {
     customClass: InMemoryClient,
   };
 
-  private static strategyConfig: MicroserviceStrategyConfig;
+  private strategyConfig: MicroserviceStrategyConfig;
 
   getClientConfig(): MicroserviceClientConfig {
-    return InMemoryTransport.clientConfig;
+    return this.clientConfig;
   }
 
   getStrategyConfig(): MicroserviceStrategyConfig {
-    if (!InMemoryTransport.strategyConfig) {
-      InMemoryTransport.strategyConfig = {
+    if (!this.strategyConfig) {
+      this.strategyConfig = {
         strategy: new InMemoryTransportStrategy(),
       };
     }
-    return InMemoryTransport.strategyConfig;
+    return this.strategyConfig;
   }
 }

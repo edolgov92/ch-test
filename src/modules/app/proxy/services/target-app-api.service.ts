@@ -1,19 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { gql, Variables } from 'graphql-request';
-import { environment } from '../../../../environment';
+import { Environment, ServicesConfig, TargetServiceConfig } from '../../../../environment';
 import { ExtendedEventDto, WithLogger } from '../../../common';
 import { GraphQLClientService } from '../../../infra';
 
 @Injectable()
 export class TargetAppApiService extends WithLogger {
-  constructor(private readonly client: GraphQLClientService) {
+  constructor(
+    private client: GraphQLClientService,
+    private configService: ConfigService<Environment>,
+  ) {
     super();
 
+    const targetServiceConfig: TargetServiceConfig = configService.get<ServicesConfig>('services').target;
     this.client.setConfig({
-      endpoint: environment.services.target.graphqlUrl,
-      rateLimitIntervalMs: environment.services.target.rateLimit.intervalMs,
-      rateLimitRequestsPerInterval: environment.services.target.rateLimit.requestsPerInterval,
-      retries: environment.services.target.requestRetries,
+      endpoint: targetServiceConfig.graphqlUrl,
+      rateLimitIntervalMs: targetServiceConfig.rateLimit.intervalMs,
+      rateLimitRequestsPerInterval: targetServiceConfig.rateLimit.requestsPerInterval,
+      retries: targetServiceConfig.requestRetries,
     });
   }
 

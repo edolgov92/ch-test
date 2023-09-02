@@ -1,8 +1,13 @@
+import { ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import { gql, GraphQLClient, Variables } from 'graphql-request';
 import { RateLimiter } from 'limiter';
+import { Environment } from '../../../../../../src/environment';
 import { GraphQLClientConfig, GraphQLClientService } from '../../../../../../src/modules/infra';
 
+const CONFIG_SERVICE: Partial<ConfigService<Environment>> = {
+  get: jest.fn().mockReturnValue(false),
+};
 const GRAPHQL_CLIENT_CONFIG: GraphQLClientConfig = {
   endpoint: 'https://test.com/graphql',
 };
@@ -21,7 +26,7 @@ class TestGraphQLClientService extends GraphQLClientService {
     private graphQLClient: GraphQLClient,
     private rateLimiter: RateLimiter,
   ) {
-    super(false);
+    super(CONFIG_SERVICE as ConfigService<Environment>);
   }
 
   protected createGraphQLClient(): GraphQLClient {

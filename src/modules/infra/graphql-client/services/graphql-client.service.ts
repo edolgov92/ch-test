@@ -1,21 +1,23 @@
-import { Inject, Injectable, Scope } from '@nestjs/common';
+import { Injectable, Scope } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import * as retry from 'async-retry';
 import { GraphQLClient, RequestDocument, Variables } from 'graphql-request';
 import { VariablesAndRequestHeadersArgs } from 'graphql-request/build/esm/types';
 import { RateLimiter } from 'limiter';
+import { Environment } from '../../../../environment';
 import { WithLogger } from '../../../common';
-import { GRAPHQL_CLIENT_TESTING_MODE_TOKEN } from '../constants';
 import { GraphQLClientConfig } from '../interfaces';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export class GraphQLClientService extends WithLogger {
   private client: GraphQLClient;
-  private limiter: RateLimiter;
-
   private config: GraphQLClientConfig = {};
+  private limiter: RateLimiter;
+  private testingMode: boolean;
 
-  constructor(@Inject(GRAPHQL_CLIENT_TESTING_MODE_TOKEN) private testingMode: boolean) {
+  constructor(private configService: ConfigService<Environment>) {
     super();
+    this.testingMode = this.configService.get('graphQLClientTestingMode');
   }
 
   setConfig(config: GraphQLClientConfig): void {

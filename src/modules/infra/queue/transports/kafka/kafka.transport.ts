@@ -1,29 +1,36 @@
+import { ConfigService } from '@nestjs/config';
 import { Transport } from '@nestjs/microservices';
 import { ConsumerConfig, KafkaConfig, logLevel } from 'kafkajs';
-import { environment } from '../../../../../environment';
+import { ApiConfig, Environment, QueueConfig } from '../../../../../environment';
 import { AbstractTransport } from '../../classes';
 import { MicroserviceClientConfig, MicroserviceStrategyConfig } from '../../interfaces';
 
 export class KafkaTransport extends AbstractTransport {
-  private static config: MicroserviceStrategyConfig = {
-    transport: Transport.KAFKA,
-    options: {
-      client: {
-        brokers: [environment.queue.url],
-        clientId: environment.containerAppReplicaName,
-        logLevel: logLevel.ERROR,
-      } as KafkaConfig,
-      consumer: {
-        groupId: environment.api.name,
-      } as ConsumerConfig,
-    },
-  };
+  private config: MicroserviceStrategyConfig;
+
+  constructor(private configService: ConfigService<Environment>) {
+    super();
+
+    this.config = {
+      transport: Transport.KAFKA,
+      options: {
+        client: {
+          brokers: [this.configService.get<QueueConfig>('queue').url],
+          clientId: this.configService.get('containerAppReplicaName'),
+          logLevel: logLevel.ERROR,
+        } as KafkaConfig,
+        consumer: {
+          groupId: this.configService.get<ApiConfig>('api').name,
+        } as ConsumerConfig,
+      },
+    };
+  }
 
   getClientConfig(): MicroserviceClientConfig {
-    return KafkaTransport.config;
+    return this.config;
   }
 
   getStrategyConfig(): MicroserviceStrategyConfig {
-    return KafkaTransport.config;
+    return this.config;
   }
 }

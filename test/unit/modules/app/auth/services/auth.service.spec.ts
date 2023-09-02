@@ -1,7 +1,9 @@
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 import { Request } from 'express';
 import * as RandToken from 'rand-token';
+import { Environment } from '../../../../../../src/environment';
 import {
   User,
   USER_REPOSITORY_TOKEN,
@@ -11,6 +13,12 @@ import {
 } from '../../../../../../src/modules';
 import { AuthService } from '../../../../../../src/modules/app/auth/services';
 
+const CONFIG_SERVICE: Partial<ConfigService<Environment>> = {
+  get: jest.fn().mockReturnValue({
+    accessTokenExpiresInSec: 30,
+    refreshTokenExpiresInSec: 60,
+  }),
+};
 const USER: User = new User({
   authId: 'source_user',
   secret: '$2b$10$59D08dqnE0NS7J09QjjdjuJAuIkEhyv35u00oWDFT1d2aqQFHjrRm',
@@ -45,6 +53,10 @@ describe('AuthService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthService,
+        {
+          provide: ConfigService,
+          useValue: CONFIG_SERVICE,
+        },
         {
           provide: JwtService,
           useValue: jwtService,
