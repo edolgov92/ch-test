@@ -8,6 +8,7 @@ import { uuid } from 'short-uuid';
 import { ApiConfig, Environment, ServicesConfig, SourceServiceConfig } from '../../../../environment';
 import {
   BaseEventDto,
+  sleep,
   UserSessionCreationDto,
   UserSessionDto,
   UserSessionRefreshDto,
@@ -47,7 +48,7 @@ export class SourceMockService extends WithLogger {
         .subscribe(async (dto: UserSessionDto) => {
           // Sleep until 5 sec before access token expiration time
           const timeoutMs: number = dto.accessTokenExpireDateTime.getTime() - Date.now() - 5000;
-          await this.sleep(timeoutMs);
+          await sleep(timeoutMs);
           // Access token is going to expire, start refreshing user session prior to that
           try {
             await Promise.race([
@@ -81,10 +82,10 @@ export class SourceMockService extends WithLogger {
           servicesConfig.source.sendEventsIntervalMs * REQUESTS_IN_CHUNK;
         sleepMs = Math.round(sleepMs * 2);
         if (sleepMs > 0) {
-          await this.sleep(sleepMs);
+          await sleep(sleepMs);
         }
       } else {
-        await this.sleep(servicesConfig.source.sendEventsIntervalMs);
+        await sleep(servicesConfig.source.sendEventsIntervalMs);
       }
       this.userSessionDto$
         .pipe(
@@ -158,9 +159,5 @@ export class SourceMockService extends WithLogger {
     } catch (ex) {
       this.logger.error(`Failed to send event : ${ex}`);
     }
-  }
-
-  private sleep(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }

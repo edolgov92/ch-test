@@ -1,4 +1,4 @@
-import { QueueType } from '../../modules/common/enums';
+import { QueueType, RepositoryType } from '../../modules/common/enums';
 
 export interface ApiConfig {
   name: string;
@@ -21,6 +21,15 @@ export interface QueueConfig {
 export interface RateLimitConfig {
   intervalMs: number;
   requestsPerInterval: number;
+}
+
+export interface RepositoryConfig {
+  type: RepositoryType;
+  url: string;
+}
+
+export interface RepositoriesConfig {
+  user: RepositoryConfig;
 }
 
 export interface ProxyServiceConfig {
@@ -52,5 +61,6 @@ export interface Environment {
   auth: AuthConfig;
   queue: QueueConfig;
   rateLimit: RateLimitConfig;
+  repositories: RepositoriesConfig;
   services: ServicesConfig;
 }

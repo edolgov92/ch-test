@@ -50,7 +50,7 @@ export class AuthService extends WithLogger {
       startDateTime: now,
       userId: user.id,
     });
-    await this.userRepository.saveUserSession(userSession);
+    await this.userRepository.createUserSession(userSession);
     return new UserSessionDto({
       accessToken,
       accessTokenExpireDateTime,
@@ -63,7 +63,9 @@ export class AuthService extends WithLogger {
 
   async invalidateRefreshToken(userSession: UserSession): Promise<void> {
     userSession.refreshTokenExpireDateTime = new Date();
-    await this.userRepository.saveUserSession(userSession);
+    await this.userRepository.updateUserSession(userSession, {
+      refreshTokenExpireDateTime: userSession.refreshTokenExpireDateTime,
+    });
   }
 
   getUserIpAddress(request: Request): string | undefined {

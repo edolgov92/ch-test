@@ -49,7 +49,7 @@ describe('AuthService', () => {
 
   beforeEach(async () => {
     jwtService = { sign: jest.fn().mockReturnValue(USER_SESSION.accessToken) };
-    userRepository = { saveUserSession: jest.fn() };
+    userRepository = { createUserSession: jest.fn(), updateUserSession: jest.fn() };
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthService,
@@ -99,6 +99,11 @@ describe('AuthService', () => {
     expect(dto.startDateTime.getTime()).toBeLessThanOrEqual(now);
   });
 
+  it('should save user session in repository after creation', async () => {
+    await authService.createUserSession(USER, USER_SESSION.ipAddress);
+    expect(userRepository.createUserSession).toHaveBeenCalledTimes(1);
+  });
+
   it('should invalidate refresh token', async () => {
     const userSession: UserSession = new UserSession({ ...USER_SESSION });
     await authService.invalidateRefreshToken(userSession);
@@ -106,10 +111,10 @@ describe('AuthService', () => {
     expect(userSession.refreshTokenExpireDateTime.getTime()).toBeLessThanOrEqual(now);
   });
 
-  it('should save user session after invalidating refresh token', async () => {
+  it('should save user session in repository after invalidating refresh token', async () => {
     const userSession: UserSession = new UserSession({ ...USER_SESSION });
     await authService.invalidateRefreshToken(userSession);
-    expect(userRepository.saveUserSession).toHaveBeenNthCalledWith(1, userSession);
+    expect(userRepository.updateUserSession).toHaveBeenCalledTimes(1);
   });
 
   it('should get user ip address from request ip field', async () => {

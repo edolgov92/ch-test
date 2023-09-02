@@ -13,11 +13,15 @@ export class UserInMemoryRepository implements UserRepository {
     return this.userEntities.find((item: User) => item.id === id);
   }
 
+  async getUsersByIds(ids: string[]): Promise<User[]> {
+    return this.userEntities.filter((item: User) => ids.includes(item.id));
+  }
+
   async getUserSessionByRefreshToken(refreshToken: any): Promise<UserSession | undefined> {
     return this.userSessionEntities.find((item: UserSession) => item.refreshToken === refreshToken);
   }
 
-  async saveUsers(entities: User[]): Promise<void> {
+  async createUsers(entities: User[]): Promise<void> {
     entities.forEach((entity: User) => {
       const existingEntity: User | undefined = this.userEntities.find(
         (item: User) => item === entity || item.id === entity.id,
@@ -32,16 +36,24 @@ export class UserInMemoryRepository implements UserRepository {
     });
   }
 
-  async saveUserSession(entity: UserSession): Promise<void> {
+  async createUserSession(entity: UserSession): Promise<void> {
     const existingEntity: UserSession | undefined = this.userSessionEntities.find(
       (item: UserSession) => item === entity || item.id === entity.id,
     );
     if (existingEntity) {
-      if (entity !== existingEntity) {
-        Object.assign(existingEntity, entity);
-      }
+      throw new Error('User session with the same id already exist');
+    }
+    this.userSessionEntities.push(entity);
+  }
+
+  async updateUserSession(entity: UserSession, update: Partial<UserSession>): Promise<void> {
+    const existingEntity: UserSession | undefined = this.userSessionEntities.find(
+      (item: UserSession) => item === entity || item.id === entity.id,
+    );
+    if (existingEntity) {
+      Object.assign(existingEntity, update);
     } else {
-      this.userSessionEntities.push(entity);
+      throw new Error('User session not found in repository');
     }
   }
 }

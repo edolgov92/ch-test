@@ -20,7 +20,16 @@ export class UsersAutoFillService {
     const proxyServiceConfig: ProxyServiceConfig = this.configService.get<ServicesConfig>('services').proxy;
     if (proxyServiceConfig.testUsersData) {
       const entities: User[] = JSON.parse(proxyServiceConfig.testUsersData);
-      await this.userRepository.saveUsers(entities);
+      const existingEntities: User[] = await this.userRepository.getUsersByIds(
+        entities.map((item: User) => item.id),
+      );
+      const existingEntitityIds: string[] = existingEntities.map((item: User) => item.id);
+      const entitiesToCreate: User[] = entities.filter(
+        (item: User) => !existingEntitityIds.includes(item.id),
+      );
+      if (entitiesToCreate.length > 0) {
+        await this.userRepository.createUsers(entitiesToCreate);
+      }
     }
   }
 }

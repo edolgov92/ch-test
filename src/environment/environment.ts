@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as shortUUID from 'short-uuid';
-import { QueueType } from '../modules/common/enums';
+import { QueueType, RepositoryType } from '../modules/common/enums';
 import { Environment } from './interfaces/environment.interface';
 
 const data: { name: string; description: string; version: string } = JSON.parse(
@@ -32,6 +32,12 @@ export const environment: Environment = {
   rateLimit: {
     intervalMs: parseInt(process.env.RATE_LIMIT_INTERVAL_MS) || 60000,
     requestsPerInterval: parseInt(process.env.RATE_LIMIT_REQUESTS_PER_INTERVAL) || 100,
+  },
+  repositories: {
+    user: {
+      type: (process.env.USER_REPOSITORY_TYPE as RepositoryType) || RepositoryType.InMemory,
+      url: process.env.USER_REPOSITORY_URL || '',
+    },
   },
   services: {
     proxy: {
