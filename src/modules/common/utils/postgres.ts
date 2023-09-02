@@ -7,7 +7,7 @@ export function extractPostgresParams(connectionString: string, logger: Logger):
   try {
     const url: URL = new URL(connectionString);
     const pathnameParts: string[] = url.pathname.split('.');
-    return {
+    const params: PostgresParams = {
       host: url.hostname,
       port: parseInt(url.port),
       username: url.username,
@@ -15,8 +15,12 @@ export function extractPostgresParams(connectionString: string, logger: Logger):
       database: pathnameParts[0].slice(1),
       schema: pathnameParts[1] || undefined,
     };
+    if (!params.database || !params.host || !params.password || !params.port || !params.username) {
+      throw new Error('Not all params were parsed');
+    }
+    return params;
   } catch (ex) {
-    logger.error(`Failed to extract postgres params from connection string: ${connectionString}`);
+    logger.error(`Failed to extract postgres params from connection string: ${connectionString}, ${ex}`);
   }
   return undefined;
 }
@@ -38,7 +42,7 @@ export async function connectToPostgres(
   let initialized: boolean = false;
   let error: any;
   let count: number = 0;
-  while (!initialized || count < 30) {
+  while (!initialized && count < 30) {
     try {
       await sequelize.sync();
       initialized = true;

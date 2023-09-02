@@ -13,7 +13,8 @@ export class TargetAppApiService extends WithLogger {
   ) {
     super();
 
-    const targetServiceConfig: TargetServiceConfig = configService.get<ServicesConfig>('services').target;
+    const targetServiceConfig: TargetServiceConfig =
+      this.configService.get<ServicesConfig>('services').target;
     this.client.setConfig({
       endpoint: targetServiceConfig.graphqlUrl,
       rateLimitIntervalMs: targetServiceConfig.rateLimit.intervalMs,

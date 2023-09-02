@@ -27,12 +27,9 @@ export class UserInMemoryRepository implements UserRepository {
         (item: User) => item === entity || item.id === entity.id,
       );
       if (existingEntity) {
-        if (entity !== existingEntity) {
-          Object.assign(existingEntity, entity);
-        }
-      } else {
-        this.userEntities.push(entity);
+        throw new Error('User with the same id already exist');
       }
+      this.userEntities.push(entity);
     });
   }
 

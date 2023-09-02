@@ -48,4 +48,14 @@ describe('ProxyQueueController', () => {
       new ExtendedEventDto({ ...BASE_DTO, brand: 'Test brand' }),
     );
   });
+
+  it('should call client connect on module init', async () => {
+    proxyQueueController.onModuleInit();
+    expect(queueClient.connect).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call client close on module destroy', async () => {
+    proxyQueueController.onModuleDestroy();
+    expect(queueClient.close).toHaveBeenCalledTimes(1);
+  });
 });

@@ -26,4 +26,5 @@ export function parseObjectDates(obj: any): any {
       parseObjectDates(value);
     }
   }
+  return obj;
 }

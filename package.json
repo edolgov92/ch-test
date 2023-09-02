@@ -1,7 +1,7 @@
 {
-  "name": "proxy",
+  "name": "events-proxy",
   "version": "0.0.1",
-  "description": "Proxy API Service to connect Source and Target aplications",
+  "description": "Events Proxy API Service to connect Source and Target aplications",
   "author": "Eugene Dolgov",
   "private": true,
   "license": "MIT",

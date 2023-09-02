@@ -13,8 +13,4 @@ export class UserEntityMapper {
   static toUserSessionDomainEntity(postgresEntity: UserSessionPostgresModel): UserSession {
     return new UserSession(cloneJson(postgresEntity.dataValues));
   }
-
-  static toUserSessionPostgresEntity(entity: UserSession): UserSessionPostgresModel {
-    return new UserSessionPostgresModel(entity);
-  }
 }

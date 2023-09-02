@@ -6,9 +6,9 @@ import { MICROSERVICE_TRANSPORTS_MAP } from '../constants';
 import { MicroserviceClientConfig, MicroserviceStrategyConfig } from '../interfaces';
 import { TransportConstructor } from '../types';
 
-const TRANSPORT_TYPES_MAP: Map<QueueType, AbstractTransport> = new Map();
+export const TRANSPORT_TYPES_MAP: Map<QueueType, AbstractTransport> = new Map();
 
-function getTransport(configService: ConfigService<Environment>): AbstractTransport {
+export function getTransport(configService: ConfigService<Environment>): AbstractTransport {
   const queueConfig: QueueConfig = configService.get('queue');
   let transport: AbstractTransport = TRANSPORT_TYPES_MAP.get(queueConfig.type);
   if (!transport) {

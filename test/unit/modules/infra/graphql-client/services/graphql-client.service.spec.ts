@@ -99,4 +99,42 @@ describe('GraphQLClientService', () => {
     expect(response).toEqual(RESPONSE_VALUE);
     expect(spy).toHaveBeenCalledTimes(2);
   });
+
+  it('should throw error after exhausting all retry attempts', async () => {
+    const spy: jest.SpyInstance = jest.spyOn(graphQLClient, 'request');
+    spy.mockRejectedValue(new Error('Mocked error'));
+
+    graphQLClientService.setConfig({
+      retries: 1,
+    });
+
+    await expect(graphQLClientService.request(MUTATION, VARIABLES)).rejects.toThrow('Mocked error');
+    expect(graphQLClient.request).toHaveBeenCalledTimes(2); // 1 initial try + 1 retry
+  }, 10000);
+
+  it('should change the endpoint dynamically', async () => {
+    const newEndpoint = 'https://new-test.com/graphql';
+    graphQLClientService.setConfig({ endpoint: newEndpoint });
+
+    await graphQLClientService.request(MUTATION, VARIABLES);
+
+    expect(graphQLClient.setEndpoint).toHaveBeenCalledWith(newEndpoint);
+  });
+
+  it('should not invoke rate limiter if not configured', async () => {
+    graphQLClientService.setConfig({
+      rateLimitIntervalMs: null,
+      rateLimitRequestsPerInterval: null,
+    });
+    await graphQLClientService.request(MUTATION, VARIABLES);
+    expect(rateLimiter.removeTokens).not.toHaveBeenCalled();
+  });
+
+  it('should not retry if retries are not configured', async () => {
+    const spy: jest.SpyInstance = jest.spyOn(graphQLClient, 'request');
+    spy.mockRejectedValue(new Error('Mocked error'));
+    graphQLClientService.setConfig({ retries: 0 });
+    await expect(graphQLClientService.request(MUTATION, VARIABLES)).rejects.toThrow('Mocked error');
+    expect(graphQLClient.request).toHaveBeenCalledTimes(1);
+  });
 });
