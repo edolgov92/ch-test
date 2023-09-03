@@ -214,43 +214,43 @@ Currently, the GraphQL API for the Target service is not yet implemented. To fac
 
 The selected stack of Node.js, TypeScript, and Nest.js offers a robust foundation for implementing sophisticated backend systems. Below is an overview of the technologies and libraries utilized in this project, each chosen for their suitability to specific requirements.
 
-### TypeScript with Prettier
+#### TypeScript with Prettier
 
 Utilizing TypeScript and formatting the code with Prettier ensures better code readability and maintainability. This approach is fundamental for collaborative development and future scalability.
 
-### NestJS
+#### NestJS
 
 Chosen for its rich ecosystem, NestJS provides modular solutions for common backend tasks like configuration management, logging, integration with message brokers and others.
 
-### Logging
+#### Logging
 
 We leverage NestJS's built-in Logger class, which offers scoped logging that is both easy to implement and interpret, thereby simplifying debugging and monitoring.
 
-### Configuration Management
+#### Configuration Management
 
 The `@nestjs/config` package's ConfigService is integrated into our architecture. It provides dependency injection (DI) capabilities, facilitating easy unit testing through mockable configurations.
 
-### Testing Framework
+#### Testing Framework
 
 We employ Jest for both unit and end-to-end testing. Additionally, the `@nestjs/testing` package allows us to mock NestJS modules, while `supertest` aids in simplifying API testing for end-to-end scenarios.
 
-### Authentication & Authorization
+#### Authentication & Authorization
 
 JWT-based authentication and authorization have been implemented as they are widely recognized and reliable. We've utilized packages such as `@nestjs/jwt`, `@nestjs/passport`, and `passport-jwt` to streamline this process.
 
-### Message Broker
+#### Message Broker
 
 - **Local Development**: An In-Memory message broker suffices, providing speed, ease of setup, and testability.
 - **Production**: RedPanda is chosen as simple, powerful, and cost-efficient streaming data platform that scales with predictable latencies and is compatible with Kafka APIs while eliminating Kafka complexity.
 
-### Data Storage
+#### Data Storage
 
 - **Local Development**: In-Memory storage serves well for user accounts and sessions, requiring no additional setup and aiding rapid testing.
 - **Production**: PostgreSQL is used for its suitability to well-structured data. As the system evolves, a transition to MongoDB can be considered for semi-structured data, and Redis could be introduced for caching.
 
-### GraphQL Client
+#### GraphQL Client
 
-Package `graphql-request` was used due to its simplicity and lightweight nature, making it an good choice for integrating with the GraphQL API.
+Package `graphql-request` was used due to its simplicity and lightweight nature, making it an good choice for integrating with the GraphQL API. On the top of client rate-limiting logic was implemented with `limiter` package and retry logic was implemented with `async-retry` package.
 
 This comprehensive technology stack is designed to be robust, yet flexible, catering both to our immediate requirements and future scalability.
 
@@ -300,15 +300,15 @@ Our application is designed with storage flexibility in mind, allowing for easy 
 
 <img src="./assets/img/storage.jpg" style="max-height: 300px">
 
-### Configurable via Environment Variables
+#### Configurable via Environment Variables
 
 The type of storage to be used can be simply specified through environment variables in the application's configuration. This enables quick transitions between different storage solutions without altering the application logic.
 
-### In-Memory Storage
+#### In-Memory Storage
 
 For local development and testing purposes, an In-Memory storage option is available. This is particularly useful for rapid prototyping and testing scenarios where persistence is not a primary concern. It offers the benefit of speed and reduced setup complexity.
 
-### PostgreSQL Storage
+#### PostgreSQL Storage
 
 For production environments, a PostgreSQL storage is in place, which is more suited for scenarios that require data persistence, ACID compliance, and robust querying capabilities.
 
@@ -336,7 +336,7 @@ For production, RedPanda, which is Kafka-compatible, is recommended. It's design
 
 The usage of a message queue inherently allows for horizontal scalability; multiple replicas of the application can be run in parallel, each capable of processing events from the queue. However, having multiple replicas introduces the need to manage rate-limiting with the Target service. Future implementations could use a Redis-based rate-limiter or built-in rate-limiting features in the message broker to manage this complexity.
 
-### Rate Limiter and Retry Logic
+### 4. Rate Limiter and Retry Logic
 
 #### Rate Limiter for Target Service API Calls
 
@@ -346,7 +346,7 @@ To manage the high frequency of incoming events and to comply with the rate-limi
 
 The system has built-in retry logic for failed requests to the Target service. The number of retry attempts can be configured through environment variables, allowing for easy adjustments based on real-world performance and requirements.
 
-### Testing and Simulation
+#### Testing and Simulation
 
 For testing purposes, a failure rate of approximately 10% for initial requests to the Target service is simulated. This allows to rigorously test the system's retry logic and rate limiter to ensure that it can handle real-world scenarios effectively.
 
