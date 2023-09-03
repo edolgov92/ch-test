@@ -1,0 +1,426 @@
+<mxfile host="app.diagrams.net" modified="2023-09-03T13:50:42.882Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="i8cjNuxW8R6uWF3xvrAZ" version="21.7.2" type="device">
+  <diagram name="Page-1" id="mIqfbaFuZbHVE5pyd4VB">
+    <mxGraphModel dx="1932" dy="636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZHiHyvD11jMnBkpUmode-156" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-110" y="1960" width="1280" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-153" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-110" y="1700" width="1280" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-124" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;User accounts and User sessions storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rounded=0;fontFamily=Helvetica;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="138.5" y="2100" width="350" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-57" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1390" width="1080" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-107" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;strokeColor=#9673a6;fontFamily=Helvetica;fontSize=12;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1405" width="520" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-29" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1050" width="1080" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-91" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;strokeColor=#9673a6;fontFamily=Helvetica;fontSize=12;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="581" y="1170" width="519" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-90" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;strokeColor=#9673a6;fontFamily=Helvetica;fontSize=12;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1070" width="520" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-28" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="710" width="1080" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-87" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;strokeColor=#9673a6;fontFamily=Helvetica;fontSize=12;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="581" y="730" width="519" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-86" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;strokeColor=#9673a6;fontFamily=Helvetica;fontSize=12;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="56" y="1070" width="510" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-85" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=12 12;strokeColor=#9673a6;fontFamily=Helvetica;fontSize=12;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="56" y="730" width="514" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-30" target="ZHiHyvD11jMnBkpUmode-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-30" value="Authenticate in Events Proxy service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="70" y="765" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-31" target="ZHiHyvD11jMnBkpUmode-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-31" value="Authenticate request received" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="71" y="1085" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-33" target="ZHiHyvD11jMnBkpUmode-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1185" />
+              <mxPoint x="220" y="790" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-33" value="Authenticate process" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="71" y="1160" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-35" target="ZHiHyvD11jMnBkpUmode-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-35" target="ZHiHyvD11jMnBkpUmode-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-35" value="Authenticated" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="240" y="765" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-37" target="ZHiHyvD11jMnBkpUmode-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-37" value="Listen for events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="595" y="765" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-38" target="ZHiHyvD11jMnBkpUmode-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-38" value="Base event received" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="774" y="765" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-41" target="ZHiHyvD11jMnBkpUmode-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-41" target="ZHiHyvD11jMnBkpUmode-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-41" value="Send event to Events Proxy service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="944" y="765" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-43" target="ZHiHyvD11jMnBkpUmode-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-43" value="Base event received" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="944" y="1085" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-44" target="ZHiHyvD11jMnBkpUmode-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-44" target="ZHiHyvD11jMnBkpUmode-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-44" value="Push Base event to Queue for processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="774" y="1085" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-48" value="Response received" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="774" y="840" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-51" target="ZHiHyvD11jMnBkpUmode-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-51" value="Base event received&lt;br style=&quot;font-size: 13px;&quot;&gt;from Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="595" y="1190" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-53" target="ZHiHyvD11jMnBkpUmode-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-53" value="Extend Base event" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="774" y="1190" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-55" target="ZHiHyvD11jMnBkpUmode-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-55" value="Send Extended event to Target service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="774" y="1260" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-59" value="GraphQL API Call" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="710" y="1356" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-60" value="REST API Call" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="1017" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-61" value="REST API Call" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1009" y="1017" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-62" target="ZHiHyvD11jMnBkpUmode-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-62" value="Wait for session expiration time" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="240" y="840" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-67" target="ZHiHyvD11jMnBkpUmode-68">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="445" y="900" />
+              <mxPoint x="320" y="900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-67" value="Session expired" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="410" y="840" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-68" target="ZHiHyvD11jMnBkpUmode-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-68" value="Refresh session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="240" y="917" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-69" target="ZHiHyvD11jMnBkpUmode-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-69" value="Refresh session request received" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="240" y="1085" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-73" target="ZHiHyvD11jMnBkpUmode-74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-73" value="Refresh session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="241" y="1160" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-74" value="Session refreshed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="410" y="917" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-82" value="REST API Call" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="310" y="1017" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-97" target="ZHiHyvD11jMnBkpUmode-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-97" value="Extended event received" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="774" y="1420" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-98" target="ZHiHyvD11jMnBkpUmode-105">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-98" value="Process Extended event" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="944" y="1420" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-105" value="Response received" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="944" y="1260" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-108" value="Authentication" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="173" y="730" width="274" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-109" value="Authentication" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1213" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-110" value="Events loop" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="595" y="950" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-111" value="Events Proxy REST API" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="581" y="1073" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-113" value="Events Queue handler" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="581" y="1290" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-114" value="Target service Events GraphQL API" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1435" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-115" value="Source service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="443" y="670" width="274" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-116" value="Events Proxy service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="173" y="1290" width="274" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-117" value="Target service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="453" y="1530" width="274" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-138" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-118" target="ZHiHyvD11jMnBkpUmode-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-118" target="ZHiHyvD11jMnBkpUmode-142">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-118" value="Initial authentication logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="64.5" y="1760" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.145;entryY=0;entryDx=0;entryDy=4.35;entryPerimeter=0;fontFamily=Helvetica;fontSize=12;fontColor=default;startArrow=classic;startFill=1;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-119" target="ZHiHyvD11jMnBkpUmode-124">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-133" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-119" target="ZHiHyvD11jMnBkpUmode-130">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="398.5" y="2080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-135" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-119" target="ZHiHyvD11jMnBkpUmode-118">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-119" value="Create User Session REST API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="64.5" y="1990" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-122" value="1) POST /user-sessions&lt;br&gt;{ authId: &quot;ID&quot;, secret: &quot;SECRET&quot; }" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="-141.5" y="1860" width="290" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-126" value="2) Get from storage and compare credentials" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="8.5" y="2060" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-127" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;{ id: &quot;usr_1&quot;, &quot;authId&quot;: &quot;AUTH1&quot;, &quot;secret&quot;: &quot;ENCRYPTED_SECRET1&quot; }&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#b85450;fontFamily=Helvetica;fontSize=9;fillColor=#f8cecc;align=center;" vertex="1" parent="1">
+          <mxGeometry x="148.5" y="2140" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-128" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;{ id: &quot;uss_1&quot;, accessToken: &quot;AT1&quot;, accessTokenExpireDateTime: &quot;DATE1_1&quot;, refreshToken: &quot;RT1&quot;, refreshTokenExpireDateTime: &quot;DATE1_2&quot;, ipAddress: &quot;IP1&quot; }&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;...&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#b85450;fontFamily=Helvetica;fontSize=9;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="318.5" y="2140" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-129" value="Users list" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="171.5" y="2140" width="114" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-130" value="User Sessions list" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="337.5" y="2140" width="114" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-134" value="3) Create and save new User Session in storage" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="243.5" y="1970" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-136" value="4) Return created User Session in response&lt;br&gt;&lt;div style=&quot;border-color: var(--border-color); font-size: 9px;&quot;&gt;{ id: &quot;uss_1&quot;, accessToken: &quot;AT1&quot;, accessTokenExpireDateTime: &quot;DATE1_1&quot;, refreshToken: &quot;RT1&quot;, refreshTokenExpireDateTime: &quot;DATE1_2&quot; }&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color); font-size: 9px;&quot;&gt;...&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="158.5" y="1835" width="203" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-139" target="ZHiHyvD11jMnBkpUmode-140">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-139" value="Refresh User Sesion logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="448.5" y="1760" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;startArrow=classic;startFill=1;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-140" target="ZHiHyvD11jMnBkpUmode-130">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-140" target="ZHiHyvD11jMnBkpUmode-128">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-155" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-140" target="ZHiHyvD11jMnBkpUmode-139">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="2015" />
+              <mxPoint x="630" y="1785" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-140" value="Refresh User Session REST API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="449.5" y="1990" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-144" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-142" target="ZHiHyvD11jMnBkpUmode-139">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-142" value="Logic to wait for session expire time" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="258.5" y="1760" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-146" value="5) POST /user-sessions/refresh&lt;br&gt;{ refreshToken: &quot;RT1&quot; }" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="483.5" y="1860" width="125" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-147" value="6) Get User Session by refreshToken, check its expire time and compare ipAddress" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="418.5" y="2042" width="140" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-149" value="7) Create and save new User Session in storage" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="558.5" y="2090" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-152" value="8) Return new User Session in response&lt;br&gt;&lt;div style=&quot;border-color: var(--border-color); font-size: 9px;&quot;&gt;{ id: &quot;uss_2&quot;, accessToken: &quot;AT2&quot;, accessTokenExpireDateTime: &quot;DATE2_1&quot;, refreshToken: &quot;RT2&quot;, refreshTokenExpireDateTime: &quot;DATE2_2&quot; }&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color); font-size: 9px;&quot;&gt;...&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="624" y="1850" width="203" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-159" value="Events Proxy&lt;br&gt;service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="-101" y="2200" width="274" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-160" value="Source service (mock in Events Proxy service)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="81.5" y="1710" width="557" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-161" target="ZHiHyvD11jMnBkpUmode-165">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-161" value="Handling events logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="869" y="1760" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-162" value="Handling events REST API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="869" y="2115" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-164" value="9) POST /events&lt;br&gt;Headers: { Authrorization: &quot;Bearer AT1&quot; }" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="940" y="1835" width="226" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-165" target="ZHiHyvD11jMnBkpUmode-162">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-165" value="Auth Guard to check access token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="869" y="1990" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-168" value="10) Checking Access Token" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1009" y="2000" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-169" value="11) Pass request to process further" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="930" y="2060" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-170" value="In-Memory Storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rounded=0;fontFamily=Helvetica;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="144" y="2660" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-171" value="PostgreSQL Storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rounded=0;fontFamily=Helvetica;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="392.5" y="2660" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-174" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-172" target="ZHiHyvD11jMnBkpUmode-173">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-172" value="App logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="308.5" y="2440" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-173" value="Storage instance (DI) with interface" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="308.5" y="2550" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-175" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="378" y="2660" as="sourcePoint" />
+            <mxPoint x="378.1" y="2600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-176" value="Call to create User Session" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="370" y="2500" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-177" value="Interface for respository with createUserSession() method" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="455.25" y="2560" width="181.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-178" value="Exact implementation of repository is based on env configuration&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="278.5" y="2780" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-181" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="ZHiHyvD11jMnBkpUmode-182" target="ZHiHyvD11jMnBkpUmode-183">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-182" value="App logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="997.13" y="2440" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-183" value="Queue adapter instance (DI) with interface" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="997.13" y="2550" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-184" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="1066.63" y="2660" as="sourcePoint" />
+            <mxPoint x="1066.73" y="2600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-185" value="Call to push received event to Queue" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1081.13" y="2500" width="151.37" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-186" value="Interface for queue adapter with emit() method" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1143.88" y="2560" width="181.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-187" value="Exact implementation of queue adapter is based on env configuration&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="955.6899999999999" y="2780" width="222.87" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-189" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rounded=0;fontFamily=Helvetica;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="930" y="2633.5" width="74" height="163" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-190" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rounded=0;fontFamily=Helvetica;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="2633.5" width="74" height="163" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-191" value="&lt;b&gt;In-Memory queue&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="900.0000000000001" y="2700" width="151.37" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-192" value="RedPanda queue" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1100.0000000000002" y="2700" width="151.37" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-193" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="1066.67" y="2880" as="sourcePoint" />
+            <mxPoint x="1066.77" y="2820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-194" value="Queue subscriber&lt;br&gt;Replica 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="915.13" y="2898" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-195" value="Processing received event" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="2850" width="151.37" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZHiHyvD11jMnBkpUmode-197" value="Queue subscriber&lt;br&gt;Replica 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1079.13" y="2898" width="140" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
