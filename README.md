@@ -6,7 +6,7 @@
 
 <img src="https://www.chalhoubgroup.com/Content/images/white_logo.png" alt="logo" style="height: 140px; width: 140px; margin-bottom: 20px; padding: 10px; background-color: #333; border-radius: 20px;"/>
 
-- [Run project locally](#run-project-locally)
+- [Run project](#run-project)
 - [Requirements](#requirements)
 - [High-level arhitecture](#high-level-arhitecture)
   - [Source service authentication logic](#1-source-service-authentication-logic)
@@ -22,8 +22,11 @@
   - [Queue and Scalability](#3-queue-and-scalability)
   - [Rate-limiter and Retry logic](#4-rate-limiter-and-retry-logic)
 - [Environment variables](#environment-variables)
+- [Future improvements](#future-improvements)
 
-## Run project locally
+## Run project
+
+#### Local setup
 
 1. Clone this repository: `git clone https://github.com/edolgov92/ch-test.git`
 2. Install dependencies: `npm i`
@@ -31,6 +34,10 @@
 4. Run project: `npm start`
 
 By default, it will run with In-Memory message broker and storage.
+
+#### Run tests
+
+After setting up project locally, it is possible to run bot unit and e2e tests using command `npm run test`, and separatelly using commands `npm run test:unit` and `npm run test:e2e`;
 
 ## Requirements
 
@@ -398,3 +405,16 @@ The application's behavior is highly configurable through the use of environment
 
 - `USER_REPOSITORY_TYPE`: Specifies the type of storage to be used (`InMemory` or `Postgres`).
 - `USER_REPOSITORY_URL`: Sets the URL for the storage repository.
+
+## Future Improvements
+
+#### Advanced Rate Limiting Strategies
+
+One area for future enhancement is the rate-limiting mechanism when interfacing with the Target service. While the existing system implements basic rate limiting, it may not suffice in a multi-replica setup.
+
+- **Redis-based Rate Limiter**: Implementing a centralized rate-limiting mechanism using Redis could offer more precise control over the number of requests sent to the Target service, especially when operating multiple replicas of the application.
+- **Message Broker Limiting**: Another approach could be to configure rate limiting directly on the message broker side. This would ensure that events are fed into the system at a pace the Target service can handle, irrespective of the number of application replicas.
+
+#### Monitoring and Alerting Systems
+
+Implementing a comprehensive monitoring and alerting system can provide real-time insights into the health of the application, latency issues, and error rates, allowing for proactive issue resolution before they impact the end-users.
