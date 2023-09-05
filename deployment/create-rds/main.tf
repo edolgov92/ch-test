@@ -1,3 +1,13 @@
+terraform {
+  backend "remote" {
+    organization = "test_terraform_organization1"
+
+    workspaces {
+      name = "ch-test-workspace"
+    }
+  }
+}
+
 provider "aws" {
   region = var.AWS_REGION
 }
