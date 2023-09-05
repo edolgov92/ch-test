@@ -9,7 +9,7 @@ terraform {
 }
 
 data "external" "get_k8s_token" {
-  program = ["/bin/sh", "-c", "aws eks get-token --region ${var.AWS_REGION} --cluster-name test-eks-Uj3etSYK --output json | jq -c '{\"token\": .status.token}'"]
+  program = ["/bin/sh", "-c", "aws eks get-token --region ${var.AWS_REGION} --cluster-name ${var.EKS_CLUSTER_NAME} --output json | jq -c '{\"token\": .status.token}'"]
 }
 
 provider "aws" {

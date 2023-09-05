@@ -44,6 +44,7 @@ jobs:
           cd deployment/deploy-service
           terraform apply -auto-approve \
             -var="AWS_REGION=${{ vars.AWS_REGION }}" \
+            -var="EKS_CLUSTER_NAME=${{ secrets.EKS_CLUSTER_NAME }}" \
             -var="K8S_CLUSTER_CA_CERTIFICATE=${{ secrets.K8S_CLUSTER_CA_CERTIFICATE }}" \
             -var="K8S_HOST=${{ secrets.K8S_HOST }}" \
             -var="PORT=${{ vars.PORT }}" \

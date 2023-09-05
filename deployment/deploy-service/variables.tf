@@ -4,6 +4,11 @@ variable "AWS_REGION" {
   default     = "us-east-2"
 }
 
+variable "EKS_CLUSTER_NAME" {
+  description = "Kubernetes Cluster Name"
+  type        = string
+}
+
 variable "K8S_CLUSTER_CA_CERTIFICATE" {
   description = "PEM-encoded CA cert for Kubernetes."
   type        = string
