@@ -84,6 +84,10 @@ By default, it will run with In-Memory message broker and storage.
 
 After setting up project locally, it is possible to run bot unit and e2e tests using command `npm run test`, and separatelly using commands `npm run test:unit` and `npm run test:e2e`;
 
+#### Redpanda message broker
+
+To run Redpanda message broker locally, navigate to `red-panda` folder and run `docker-compose up`. After that `QUEUE_TYPE=Kafka` can be configured with `QUEUE_URL=localhost:19092`;
+
 ## Deployment
 
 The deployment scripts utilize Terraform to provision the service within an AWS EKS Cluster.
