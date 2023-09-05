@@ -6,8 +6,9 @@
 
 <img src="https://www.chalhoubgroup.com/Content/images/white_logo.png" alt="logo" style="height: 140px; width: 140px; margin-bottom: 20px; padding: 10px; background-color: #333; border-radius: 20px;"/>
 
-- [Run project](#run-project)
 - [Requirements](#requirements)
+- [Run project](#run-project)
+- [Deployment](#deployment)
 - [High-level arhitecture](#high-level-arhitecture)
   - [Source service authentication logic](#1-source-service-authentication-logic)
   - [Events Proxy Service Authentication Module](#2-events-proxy-service-authentication-module)
@@ -23,21 +24,6 @@
   - [Rate-limiter and Retry logic](#4-rate-limiter-and-retry-logic)
 - [Environment variables](#environment-variables)
 - [Future improvements](#future-improvements)
-
-## Run project
-
-#### Local setup
-
-1. Clone this repository: `git clone https://github.com/edolgov92/ch-test.git`
-2. Install dependencies: `npm i`
-3. Create `.env` file in root folder based on `.env.example` (it is possible just to copy file content without modifications)
-4. Run project: `npm start`
-
-By default, it will run with In-Memory message broker and storage.
-
-#### Run tests
-
-After setting up project locally, it is possible to run bot unit and e2e tests using command `npm run test`, and separatelly using commands `npm run test:unit` and `npm run test:e2e`;
 
 ## Requirements
 
@@ -81,6 +67,98 @@ A[Source Applcation] -- System to be created --> C[Target Application]
 - Use Node (TypeScript) or GO as a programming language
 - Use Terraform to provision the infrastructure
 - Use AWS or GCP
+
+## Run project
+
+#### Local setup
+
+1. Clone this repository: `git clone https://github.com/edolgov92/ch-test.git`
+2. Install dependencies: `npm i`
+3. Create `.env` file in root folder based on `.env.example` (it is possible just to copy file content without modifications)
+4. Run project: `npm start`
+
+By default, it will run with In-Memory message broker and storage.
+
+#### Run tests
+
+After setting up project locally, it is possible to run bot unit and e2e tests using command `npm run test`, and separatelly using commands `npm run test:unit` and `npm run test:e2e`;
+
+## Deployment
+
+The deployment scripts utilize Terraform to provision the service within an AWS EKS Cluster.
+
+#### Prerequisites
+
+For a step-by-step guide to the prerequisites, refer to the article [Provision an EKS cluster (AWS)](https://developer.hashicorp.com/terraform/tutorials/aws/eks). A quick list of requirements includes:
+
+- Terraform v1.3+ installed locally.
+- a Terraform Cloud account and organization.
+- Terraform Cloud locally authenticated.
+- a Terraform Cloud variable set configured with your AWS credentials.
+- an AWS account
+- the AWS CLI v2.7.0/v1.24.0 or newer, installed and configured
+- AWS IAM Authenticator
+- kubectl v1.24.0 or newer
+
+See the article for detailed information on each requirement.
+
+#### 1. Creating AWS EKS Cluster
+
+Go to /deployment/create-eks-cluster folder. Then review input variables in `variables.tf`:
+
+- AWS_REGION - AWS region where you plan to create resources, default is "us-east-2"
+
+After that run commands:
+
+`terraform init` \
+`terraform apply`
+
+If you want to provide your own values for input variables (in this or next steps), it can be done this way:
+
+`terraform apply -var="AWS_REGION=us-east-1"`
+
+In output you should get `EKS_CLUSTER_NAME`, remember it.
+
+**Note:** review all changes to be made before confirming deployent.
+
+#### 2. Creating AWS ECR
+
+Go to /deployment/create-ecr folder. Then review input variables in `variables.tf`:
+
+- AWS_REGION - AWS region where you plan to create resources, default is "us-east-2"
+
+After that run commands:
+
+`terraform init` \
+`terraform apply`
+
+#### 3, Creating AWS RDS Postgres Database
+
+Go to /deployment/create-rds folder. Then review input variables in `variables.tf`:
+
+- AWS_REGION - AWS region where you plan to create resources, default is "us-east-2"
+- DB_PASSWORD - RDS Database root `postgres` user password
+- IP_ADDRESS - your IP address to be able to connect to created DB
+- EKS_CLUSTER_NAME - EKS Cluster name, it is provided in output after creating EKS Cluster in first step.
+
+After that run commands:
+
+`terraform init` \
+`terraform apply`
+
+#### 4. CI/CD Configuration
+
+Check prepared pipeline script: `.github/workflows/main.yml`. To let it work you need to set GitHub Secrets:
+
+- AWS_ACCESS_KEY_ID - AWS Access key
+- AWS_SECRET_ACCESS_KEY - AWS Secret access key
+- TF_API_TOKEN - Terraform API Token that can be created in Terraform Cloud
+
+  and GitHub Variables:
+
+- AWS_REGION - AWS region where all resources are created
+
+After that push to branch, specified in this config file will start deployment process in GitHub Actions.
 
 ## High-level arhitecture
 
