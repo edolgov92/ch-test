@@ -152,6 +152,8 @@ Check prepared pipeline script: `.github/workflows/main.yml`. To let it work you
 
 - AWS_ACCESS_KEY_ID - AWS Access key
 - AWS_SECRET_ACCESS_KEY - AWS Secret access key
+- K8S_CLUSTER_CA_CERTIFICATE - EKS Cluster CA Certificate, can be found in Kubeconfig `~/.kube/config`
+- K8S_HOST - EKS Cluster host, can be found in Kubeconfig `~/.kube/config`
 - TF_API_TOKEN - Terraform API Token that can be created in Terraform Cloud
 
   and GitHub Variables:
