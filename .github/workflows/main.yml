@@ -1,0 +1,53 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Deploy service - Initialize Terraform
+        run: |
+          cd deployment/deploy-service
+          terraform init -backend-config="token=${{ secrets.TF_API_TOKEN }}"
+
+      - name: Deploy service - Apply Terraform changes
+        run: |
+          cd deployment/deploy-service
+          terraform apply -auto-approve \
+            -var="AWS_REGION=${{ vars.AWS_REGION }}" \
+            -var="K8S_CLUSTER_CA_CERTIFICATE=${{ secrets.K8S_CLUSTER_CA_CERTIFICATE }}" \
+            -var="K8S_HOST=${{ secrets.K8S_HOST }}" \
+            -var="PORT=${{ vars.PORT }}" \
+            -var="API_URL=${{ vars.API_URL }}" \
+            -var="AUTH_ACCESS_TOKEN_EXPIRES_IN_SEC=${{ vars.AUTH_ACCESS_TOKEN_EXPIRES_IN_SEC }}" \
+            -var="AUTH_ACCESS_TOKEN_SECRET=${{ secrets.AUTH_ACCESS_TOKEN_SECRET }}" \
+            -var="AUTH_REFRESH_TOKEN_EXPIRES_IN_SEC=${{ vars.AUTH_REFRESH_TOKEN_EXPIRES_IN_SEC }}" \
+            -var="GRAPHQL_CLIENT_TESTING_MODE=${{ vars.GRAPHQL_CLIENT_TESTING_MODE }}" \
+            -var="QUEUE_TYPE=${{ vars.QUEUE_TYPE }}" \
+            -var="QUEUE_URL=${{ secrets.QUEUE_URL }}" \
+            -var="PROXY_SERVICE_TEST_USERS_DATA=${{ secrets.PROXY_SERVICE_TEST_USERS_DATA }}" \
+            -var="RATE_LIMIT_INTERVAL_MS=${{ vars.RATE_LIMIT_INTERVAL_MS }}" \
+            -var="RATE_LIMIT_REQUESTS_PER_INTERVAL=${{ vars.RATE_LIMIT_REQUESTS_PER_INTERVAL }}" \
+            -var="SOURCE_SERVICE_SEND_EVENTS_INTERVAL_MS=${{ vars.SOURCE_SERVICE_SEND_EVENTS_INTERVAL_MS }}" \
+            -var="SOURCE_SERVICE_TEST_USER_CREDENTIALS=${{ secrets.SOURCE_SERVICE_TEST_USER_CREDENTIALS }}" \
+            -var="TARGET_SERVICE_GRAPHQL_URL=${{ vars.TARGET_SERVICE_GRAPHQL_URL }}" \
+            -var="TARGET_SERVICE_REQUEST_RETRIES=${{ vars.TARGET_SERVICE_REQUEST_RETRIES }}" \
+            -var="TARGET_SERVICE_RATE_LIMIT_INTERVAL_MS=${{ vars.TARGET_SERVICE_RATE_LIMIT_INTERVAL_MS }}" \
+            -var="TARGET_SERVICE_RATE_LIMIT_REQUESTS_PER_INTERVAL=${{ vars.TARGET_SERVICE_RATE_LIMIT_REQUESTS_PER_INTERVAL }}" \
+            -var="USER_REPOSITORY_TYPE=${{ vars.USER_REPOSITORY_TYPE }}" \
+            -var="USER_REPOSITORY_URL=${{ secrets.USER_REPOSITORY_URL }}"

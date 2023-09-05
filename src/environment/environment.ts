@@ -1,7 +1,7 @@
-import { Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as shortUUID from 'short-uuid';
 import { QueueType, RepositoryType } from '../modules/common/enums';
+import { logEnvironment } from '../modules/common/utils/environment';
 import { Environment } from './interfaces/environment.interface';
 
 const data: { name: string; description: string; version: string } = JSON.parse(
@@ -58,5 +58,4 @@ export const environment: Environment = {
   },
 };
 
-const logger: Logger = new Logger('Environment');
-logger.log(JSON.stringify(environment, null, 2));
+logEnvironment(environment);
