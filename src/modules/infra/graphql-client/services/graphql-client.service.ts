@@ -20,6 +20,7 @@ export class GraphQLClientService extends WithLogger {
     this.testingMode = this.configService.get('graphQLClientTestingMode');
   }
 
+  // Apply configs to client
   setConfig(config: GraphQLClientConfig): void {
     if (typeof config.endpoint === 'string' && config.endpoint !== this.config.endpoint) {
       this.config.endpoint = config.endpoint;
@@ -93,6 +94,7 @@ export class GraphQLClientService extends WithLogger {
     return retry(
       async () => {
         try {
+          // In testing mode we can simulate resource unavailability
           if (this.testingMode && attempt === 1 && Math.random() > 0.9) {
             throw new Error('Error to simulate resource unavailability');
           }

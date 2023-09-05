@@ -4,6 +4,7 @@ import * as jwt from 'jsonwebtoken';
 
 export const UserTokenContext = createParamDecorator((data: unknown, context: ExecutionContext) => {
   const request: Request = context.switchToHttp().getRequest();
+  // Get Access Token from Authorization header
   const token: string | undefined =
     request && request.headers && request.headers.authorization
       ? request.headers.authorization.split(' ')[1]

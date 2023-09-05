@@ -72,6 +72,9 @@ export class SourceMockService extends WithLogger {
     await this.createUserSession();
     let requestsDoneInChunk: number = 0;
     const servicesConfig: ServicesConfig = this.configService.get('services');
+    // Send REQUESTS_IN_CHUNK events to Proxy, after that wait a bit to let
+    // proxy process them (according to Target service rate limits), after that
+    // send next chunk of events
     while (true) {
       if (requestsDoneInChunk === REQUESTS_IN_CHUNK) {
         requestsDoneInChunk = 0;
@@ -87,6 +90,7 @@ export class SourceMockService extends WithLogger {
       } else {
         await sleep(servicesConfig.source.sendEventsIntervalMs);
       }
+      // Need to make sure we are authenticated before sending event
       this.userSessionDto$
         .pipe(
           filter((dto: UserSessionDto) => !!dto),
@@ -143,6 +147,7 @@ export class SourceMockService extends WithLogger {
         timestamp: new Date(),
       });
       this.logger.debug(`${dto.id} | Sending event to Proxy`);
+      // We wait for response from Proxy service no more than 500ms, after that we reject promise
       await Promise.race([
         new Promise<void>((resolve, reject) => {
           setTimeout(() => {
