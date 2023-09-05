@@ -12,8 +12,10 @@ const REQUEST: Partial<Request> = {
 describe('UserTokenContextDecorator', () => {
   let context: Partial<ExecutionContext>;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/ban-types
   function getParamDecoratorFactory(decorator: Function) {
     class Test {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       public test(@UserTokenContext() value: unknown) {}
     }
     const args = Reflect.getMetadata(ROUTE_ARGS_METADATA, Test, 'test');
