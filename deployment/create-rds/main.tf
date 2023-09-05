@@ -3,7 +3,7 @@ terraform {
     organization = "test_terraform_organization1"
 
     workspaces {
-      name = "ch-test-workspace"
+      name = "ch-test-rds-workspace"
     }
   }
 }
