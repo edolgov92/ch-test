@@ -514,3 +514,7 @@ One area for future enhancement is the rate-limiting mechanism when interfacing 
 #### Monitoring and Alerting Systems
 
 Implementing a comprehensive monitoring and alerting system can provide real-time insights into the health of the application, latency issues, and error rates, allowing for proactive issue resolution before they impact the end-users.
+
+#### Prepare Terraform configs to deploy Redpanda to AWS
+
+At the moment, `redpanda-cluster` Terraform module has issues while running out of the box (mismatch Subnets with Redpanda security group), need to do investigation of scripts in [Redpanda deployment automation repository](https://github.com/redpanda-data/deployment-automation/tree/main/aws) to understand required input parameters and deployment logic.
