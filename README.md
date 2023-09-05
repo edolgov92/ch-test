@@ -173,6 +173,8 @@ With Elastic Cloud, you can seamlessly integrate `Kubernetes` logging by choosin
 
 ## Checking logs
 
+#### Elastic Cloud
+
 Once you've successfully configured Kubernetes integration in Elastic Cloud, you can navigate to the `Observability -> Logs` dashboard to view your logs.
 
 To refine your search within the `Logs` dashboard, consider applying the following filters:
@@ -181,6 +183,26 @@ To refine your search within the `Logs` dashboard, consider applying the followi
 - **Custom Queries**: Leverage Elasticsearch Query DSL to further narrow down your log display. For instance, to show only logs related to our NestJS application, use the query `{ "match": { "message": "Nest" } }`. To specifically view Postgres logs, use the query `{ "match": { "message": "Executing" } }`.
 - **Highlight necessary info**: You can highlight data that you need with `Highlights` dropdown, for example, set it to specific event id to view it's logs.
 - **Stream live**: Click on `Stream live` to view logs live stream.
+
+#### Logs example
+
+Example of logs for single event with ID `6dcd8f51-5a7c-4f45-8d2b-972b4170767f`:
+
+```
+[Nest] 77115  - 09/06/2023, 12:40:38 AM     LOG [SourceMockService] Successfully authenticated in Proxy
+[Nest] 77115  - 09/06/2023, 12:40:39 AM   DEBUG [SourceMockService] 6dcd8f51-5a7c-4f45-8d2b-972b4170767f | Sending event to Proxy
+[Nest] 77115  - 09/06/2023, 12:40:39 AM   DEBUG [ProxyHttpController] 6dcd8f51-5a7c-4f45-8d2b-972b4170767f | Received base event from user source_user (usr_5Qv1ARJMWJnD1hTdbNgiQf) to handle in REST API, event data: {"id":"6dcd8f51-5a7c-4f45-8d2b-972b4170767f","name":"Event name","body":"Event body","timestamp":"2023-09-05T20:40:39.525Z"}
+[Nest] 77115  - 09/06/2023, 12:40:39 AM   DEBUG [ProxyQueueController] 6dcd8f51-5a7c-4f45-8d2b-972b4170767f | Received based event to handle from QUEUE, event data: {"id":"6dcd8f51-5a7c-4f45-8d2b-972b4170767f","name":"Event name","body":"Event body","timestamp":"2023-09-05T20:40:39.525Z"}
+[Nest] 77115  - 09/06/2023, 12:40:39 AM   DEBUG [ProxyQueueController] 6dcd8f51-5a7c-4f45-8d2b-972b4170767f | Added brand Test brand to dto data
+[Nest] 77115  - 09/06/2023, 12:40:39 AM   DEBUG [SourceMockService] 6dcd8f51-5a7c-4f45-8d2b-972b4170767f | Event was sent successuly
+[Nest] 77115  - 09/06/2023, 12:40:50 AM   DEBUG [TargetAppApiService] 6dcd8f51-5a7c-4f45-8d2b-972b4170767f | Extended event was sent to Target service successfully.
+```
+
+All logs related to specific event ID has following format:
+
+`6dcd8f51-5a7c-4f45-8d2b-972b4170767f | <LOG_MESSAGE>`
+
+It allows to easily filter logs in Elastic Cloud by specific event ID.
 
 ## High-level arhitecture
 
