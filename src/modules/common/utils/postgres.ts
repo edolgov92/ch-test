@@ -3,6 +3,12 @@ import { ModelCtor, Sequelize } from 'sequelize-typescript';
 import { PostgresParams } from '../interfaces';
 import { sleep } from './date-time';
 
+/**
+ * Extracts Postgres params to initialize ORM from connection string
+ * @param {String} connectionString - database connection string
+ * @param {Logger} logger - instance of Logger
+ * @returns {PostgresParams | undefined} - extracted params
+ */
 export function extractPostgresParams(connectionString: string, logger: Logger): PostgresParams | undefined {
   try {
     const url: URL = new URL(connectionString);
@@ -25,6 +31,12 @@ export function extractPostgresParams(connectionString: string, logger: Logger):
   return undefined;
 }
 
+/**
+ * Initializes ORM to connect to Postgres database
+ * @param {String} connectionString - connection string
+ * @param {String[] | ModelCtor[]} models - ORM data models
+ * @param {Logger} logger - instance of Logger
+ */
 export async function connectToPostgres(
   connectionString: string,
   models: string[] | ModelCtor[],

@@ -26,10 +26,18 @@ export class KafkaTransport extends AbstractTransport {
     };
   }
 
+  /**
+   * Returns microservice client config for Kafka message broker configuration
+   * @returns {MicroserviceClientConfig} - configuration for Kafka message broker client
+   */
   getClientConfig(): MicroserviceClientConfig {
     return this.config;
   }
 
+  /**
+   * Returns microservice strategy config for Kafka message broker configuration
+   * @returns {MicroserviceStrategyConfig} - configuration for Kafka message broker strategy
+   */
   getStrategyConfig(): MicroserviceStrategyConfig {
     return this.config;
   }

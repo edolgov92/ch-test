@@ -31,6 +31,12 @@ export class AuthHttpController extends WithLogger {
     super();
   }
 
+  /**
+   * Creates user session using user's credentials
+   * @param {UserSessionCreationDto} dto - data with user credentials
+   * @param {Request} request - HTTP request data to extract client IP address
+   * @returns {UserSessionDto} - User session with access and refresh tokens
+   */
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiResponse({
@@ -54,6 +60,12 @@ export class AuthHttpController extends WithLogger {
     return this.authService.createUserSession(user, ipAddress);
   }
 
+  /**
+   * Refreshes user session using refresh token
+   * @param {UserSessionRefreshDto} dto - data refresh token
+   * @param {Request} request - HTTP request data to extract client IP address
+   * @returns {UserSessionDto} - User session with new access and refresh tokens
+   */
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   @ApiResponse({

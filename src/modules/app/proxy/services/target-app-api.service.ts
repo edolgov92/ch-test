@@ -23,6 +23,10 @@ export class TargetAppApiService extends WithLogger {
     });
   }
 
+  /**
+   * Sends extended event to Target service using GraphQL client
+   * @param {ExtendedEventDto} extendedDto - extended event data
+   */
   async sendExtendedEvent(extendedDto: ExtendedEventDto): Promise<void> {
     const mutation: string = gql`
       mutation ProcessEvent($input: ProcessEventInput!) {

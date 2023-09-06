@@ -9,6 +9,10 @@ export class InMemoryClient extends ClientProxy {
 
   close() {}
 
+  /**
+   * Pushes event to Subject - In-Memory message broker
+   * @param {ReadPacket} packet - object with event data and pattern
+   */
   async dispatchEvent({ data, pattern }: ReadPacket): Promise<any> {
     InMemoryClient.queue$.next({ pattern, data });
   }

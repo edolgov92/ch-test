@@ -5,6 +5,10 @@ import { User } from '../entitites';
 
 const SENSITIVE: string = '(sensitive)';
 
+/**
+ * Logs current environment variables hiding sensitive data
+ * @param {Environment} environment - object with environment variables
+ */
 export function logEnvironment(environment: Environment): void {
   const environmentToLog: Environment = JSON.parse(JSON.stringify(environment));
   environmentToLog.auth.accessTokenSecret = SENSITIVE;

@@ -34,6 +34,10 @@ export class SourceMockService extends WithLogger {
     this.apiUrl = apiConfig.url;
   }
 
+  /**
+   * Calles on bootstraping application, starts events producer and handles refresh
+   * user session logic
+   */
   onApplicationBootstrap(): void {
     const sourceServiceConfig: SourceServiceConfig =
       this.configService.get<ServicesConfig>('services').source;
@@ -68,6 +72,9 @@ export class SourceMockService extends WithLogger {
     }
   }
 
+  /**
+   * Starts events producer to send them to Events Proxy in loop
+   */
   private async startEventsProducer(): Promise<void> {
     await this.createUserSession();
     let requestsDoneInChunk: number = 0;
@@ -103,6 +110,9 @@ export class SourceMockService extends WithLogger {
     }
   }
 
+  /**
+   * Creates user session in Events Proxy
+   */
   private async createUserSession(): Promise<void> {
     try {
       const response: AxiosResponse<UserSessionDto> = await firstValueFrom(
@@ -119,6 +129,10 @@ export class SourceMockService extends WithLogger {
     }
   }
 
+  /**
+   * Refreshes user session in Events Proxy
+   * @param {String} refreshToken - refresh token
+   */
   private async refreshUserSession(refreshToken: string): Promise<void> {
     try {
       const response: AxiosResponse<UserSessionDto> = await firstValueFrom(
@@ -138,6 +152,9 @@ export class SourceMockService extends WithLogger {
     }
   }
 
+  /**
+   * Sends base event to Events Proxy
+   */
   private async sendEvent(): Promise<void> {
     try {
       const dto: BaseEventDto = new BaseEventDto({

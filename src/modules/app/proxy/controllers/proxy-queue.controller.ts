@@ -13,14 +13,24 @@ export class ProxyQueueController extends WithLogger {
     super();
   }
 
-  async onModuleInit() {
+  /**
+   * Calls while initializing of module and connects to message broker
+   */
+  async onModuleInit(): Promise<void> {
     await this.client.connect();
   }
 
-  async onModuleDestroy() {
+  /**
+   * Calles while destroying of module and closes message broker connection
+   */
+  onModuleDestroy(): void {
     this.client.close();
   }
 
+  /**
+   * Handles base event received from message broker, extends it and sends to Target service
+   * @param {BaseEventDto} baseDto - base event data
+   */
   @UsePipes(new ValidationPipe({ transform: true }))
   @MessagePattern(QueueEvent.BaseEventReceived)
   async handleEvent(@Payload() baseDto: BaseEventDto): Promise<void> {

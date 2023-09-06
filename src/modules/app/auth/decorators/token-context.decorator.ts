@@ -2,6 +2,10 @@ import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 
+/**
+ * Decorator to get user data from accessToken, can be used in controller methods.
+ * @returns {UserTokenContextDto | undefined} - User data or undefined if not able to extract data
+ */
 export const UserTokenContext = createParamDecorator((data: unknown, context: ExecutionContext) => {
   const request: Request = context.switchToHttp().getRequest();
   // Get Access Token from Authorization header

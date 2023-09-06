@@ -12,10 +12,16 @@ export class UsersAutoFillService {
     @Inject(USER_REPOSITORY_TOKEN) private userRepository: UserRepository,
   ) {}
 
+  /**
+   * Calles while module initialization and runs adding test users to repository process
+   */
   async onModuleInit(): Promise<void> {
     await this.fillUsers();
   }
 
+  /**
+   * Adds test users to repository if they are not exist there
+   */
   private async fillUsers(): Promise<void> {
     const proxyServiceConfig: ProxyServiceConfig = this.configService.get<ServicesConfig>('services').proxy;
     if (proxyServiceConfig.testUsersData) {

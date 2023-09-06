@@ -12,6 +12,11 @@ export class ProxyHttpController extends WithLogger {
     super();
   }
 
+  /**
+   * Handles base event received from Source service, pushes it to queue for processing
+   * @param {BaseEventDto} baseDto - base event data
+   * @param {UserTokenContextDto} userDto - user's data that includes id and authId
+   */
   @Post()
   @HttpCode(HttpStatus.OK)
   @UseGuards(JwtAuthGuard)

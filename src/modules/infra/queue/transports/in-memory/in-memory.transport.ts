@@ -10,10 +10,18 @@ export class InMemoryTransport extends AbstractTransport {
 
   private strategyConfig: MicroserviceStrategyConfig;
 
+  /**
+   * Returns microservice client config for In-Memory message broker configuration
+   * @returns {MicroserviceClientConfig} - configuration for In-Memory message broker client
+   */
   getClientConfig(): MicroserviceClientConfig {
     return this.clientConfig;
   }
 
+  /**
+   * Returns microservice strategy config for In-Memory message broker configuration
+   * @returns {MicroserviceStrategyConfig} - configuration for In-Memory message broker strategy
+   */
   getStrategyConfig(): MicroserviceStrategyConfig {
     if (!this.strategyConfig) {
       this.strategyConfig = {

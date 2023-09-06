@@ -20,7 +20,10 @@ export class GraphQLClientService extends WithLogger {
     this.testingMode = this.configService.get('graphQLClientTestingMode');
   }
 
-  // Apply configs to client
+  /**
+   * Applies config to GraphQL client
+   * @param {GraphQLClientConfig} config - config data
+   */
   setConfig(config: GraphQLClientConfig): void {
     if (typeof config.endpoint === 'string' && config.endpoint !== this.config.endpoint) {
       this.config.endpoint = config.endpoint;
@@ -60,6 +63,12 @@ export class GraphQLClientService extends WithLogger {
     }
   }
 
+  /**
+   * Sends GraphQL request
+   * @param {RequestDocument} document - request document
+   * @param {VariablesAndRequestHeadersArgs<T>} variablesAndRequestHeaders - document variables and request headers
+   * @returns {T} - data returned in response
+   */
   async request<T, V extends Variables = Variables>(
     document: RequestDocument,
     ...variablesAndRequestHeaders: VariablesAndRequestHeadersArgs<V>
@@ -72,10 +81,21 @@ export class GraphQLClientService extends WithLogger {
       : this.doRequest(document, ...variablesAndRequestHeaders);
   }
 
+  /**
+   * Creates GraphQLClient instance
+   * @param {BaseEventDto} endpoint - GraphQL API endpoint url
+   * @returns {GraphQLClient} - instance of GraphQLClient
+   */
   protected createGraphQLClient(endpoint: string): GraphQLClient {
     return new GraphQLClient(endpoint);
   }
 
+  /**
+   * Creates RateLimiter instance
+   * @param {Number} rateLimitIntervalMs - interval in milliseconds
+   * @param {Number} rateLimitRequestsPerInterval - requests number per interval
+   * @returns {RateLimiter} - instance of RateLimiter
+   */
   protected createRateLimiter(
     rateLimitIntervalMs: number,
     rateLimitRequestsPerInterval: number,
@@ -86,6 +106,12 @@ export class GraphQLClientService extends WithLogger {
     });
   }
 
+  /**
+   * Wraps request call with Retry logic
+   * @param {RequestDocument} document - request document
+   * @param {VariablesAndRequestHeadersArgs<T>} variablesAndRequestHeaders - document variables and request headers
+   * @returns {T} - data returned in response
+   */
   private retryRequest<T, V extends Variables = Variables>(
     document: RequestDocument,
     ...variablesAndRequestHeaders: VariablesAndRequestHeadersArgs<V>
@@ -121,6 +147,12 @@ export class GraphQLClientService extends WithLogger {
     );
   }
 
+  /**
+   * Executes single GraphQL request
+   * @param {RequestDocument} document - request document
+   * @param {VariablesAndRequestHeadersArgs<T>} variablesAndRequestHeaders - document variables and request headers
+   * @returns {T} - data returned in response
+   */
   private async doRequest<T, V extends Variables = Variables>(
     document: RequestDocument,
     ...variablesAndRequestHeaders: VariablesAndRequestHeadersArgs<V>

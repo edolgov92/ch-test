@@ -21,10 +21,22 @@ export class AuthService extends WithLogger {
     this.authConfig = this.configService.get('auth');
   }
 
+  /**
+   * Validates user's secret based on encrypted secret from storage
+   * @param {String} dtoSecret - secret from request DTO
+   * @param {Request} storedSecret - secret from storage
+   * @returns {Boolean} - boolean indicating if secrets the same or not
+   */
   async checkSecret(dtoSecret: string, storedSecret: string): Promise<boolean> {
     return dtoSecret === storedSecret || bcrypt.compare(dtoSecret, storedSecret);
   }
 
+  /**
+   * Creates session for user with access and refresh tokens
+   * @param {User} user - user entity
+   * @param {Request} ipAddress - IP address of user client (optional)
+   * @returns {UserSessionDto} - user session with access and refresh tokens
+   */
   async createUserSession(user: User, ipAddress?: string): Promise<UserSessionDto> {
     const now: Date = new Date();
     const accessTokenExpireDateTime: Date = new Date(now);
@@ -61,6 +73,10 @@ export class AuthService extends WithLogger {
     });
   }
 
+  /**
+   * Invalidates refresh token by updating it's expire date and time to now
+   * @param {UserSession} userSession - user session
+   */
   async invalidateRefreshToken(userSession: UserSession): Promise<void> {
     userSession.refreshTokenExpireDateTime = new Date();
     await this.userRepository.updateUserSession(userSession, {
@@ -68,6 +84,11 @@ export class AuthService extends WithLogger {
     });
   }
 
+  /**
+   * Extracts user IP address from HTTP request
+   * @param {Request} request - HTTP request
+   * @returns {String | undefined} - user IP address
+   */
   getUserIpAddress(request: Request): string | undefined {
     if (!request) {
       return undefined;
