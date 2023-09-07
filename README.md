@@ -204,6 +204,15 @@ All logs related to specific event ID has following format:
 
 It allows to easily filter logs in Elastic Cloud by specific event ID.
 
+#### Redpanda logs
+
+If `Redpanda` is used, a Kafka-compatible message broker, you may find it's logs particularly useful for debugging and monitoring the application. Here's how you can view the events in the Redpanda Console:
+
+- Make sure the `QUEUE_TYPE` environment variable is set to `Kafka` and `QUEUE_URL` points to Redpanda instance.
+- Open `Redpanda Console` in browser, click on the `base_event_received` topic to see the events that were pushed to the queue:
+
+![redpanda-console](./assets/img/redpanda-console.jpg)
+
 ## High-level arhitecture
 
 The objective is to build a robust and scalable system that serves as an intermediary between two applications: the source and the target application. This system will ensure seamless event data flow from the source to the target application, considering various requirements like authentication, rate-limiting, high availability, and traceability.
@@ -543,4 +552,9 @@ Implementing a comprehensive monitoring and alerting system can provide real-tim
 
 #### Prepare Terraform configs to deploy Redpanda to AWS
 
-At the moment, `redpanda-cluster` Terraform module has issues while running out of the box (mismatch Subnets with Redpanda security group), need to do investigation of scripts in [Redpanda deployment automation repository](https://github.com/redpanda-data/deployment-automation/tree/main/aws) to understand required input parameters and deployment logic.
+As of now, test version of `Redpanda` is used, it was deployed from a [Docker Compose file](https://docs.redpanda.com/current/reference/docker-compose/). This approach serves as a cost-effective and quick solution for the short term. Later need to investigate `redpanda-cluster` Terraform module for creating a more robust deployment script.
+
+Here are some valuable resources to refer to for future developments:
+
+- [Redpanda Deployment Automation Repository](https://github.com/redpanda-data/deployment-automation/tree/main/aws)
+- [Guide: Using Terraform and Ansible to Deploy Redpanda](https://docs.redpanda.com/21.11/deployment/production-deployment-automation/)
