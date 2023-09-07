@@ -1,3 +1,4 @@
+# Initialize Terraform backend configuration with organization and workspace from cloud
 terraform {
   backend "remote" {
     organization = "test_terraform_organization1"
@@ -8,29 +9,34 @@ terraform {
   }
 }
 
+# Get token to access dynamically EKS Cluster
 data "external" "get_k8s_token" {
   program = ["/bin/sh", "-c", "aws eks get-token --region ${var.AWS_REGION} --cluster-name ${var.EKS_CLUSTER_NAME} --output json | jq -c '{\"token\": .status.token}'"]
 }
 
+# Configure AWS provider with region where resources will be created
 provider "aws" {
   region = var.AWS_REGION
 }
 
+# Kubernetes provider configuration
 provider "kubernetes" {
   host                   = var.K8S_HOST
   cluster_ca_certificate = var.K8S_CLUSTER_CA_CERTIFICATE
   token                  = data.external.get_k8s_token.result["token"]
 }
 
-# Reference existing ECR repository
+# Retrieve information about the existing AWS ECR repository
 data "aws_ecr_repository" "ch_test" {
   name = "ch-test"
 }
 
+# Local variable to hold unique timestamp
 locals {
   unique_tag = formatdate("YYYYMMDDhhmmss", timestamp())
 }
 
+# Login to the AWS ECR repository
 resource "null_resource" "ecr_login" {
   triggers = {
     always_run = "${timestamp()}"
@@ -41,6 +47,7 @@ resource "null_resource" "ecr_login" {
   }
 }
 
+# Build and push the Docker image
 resource "null_resource" "build_and_push_image" {
   triggers = {
     always_run = "${timestamp()}"
@@ -53,6 +60,7 @@ resource "null_resource" "build_and_push_image" {
   depends_on = [null_resource.ecr_login]
 }
 
+# Kubernetes ConfigMap for storing application configuration
 resource "kubernetes_config_map" "ch_test_config" {
   metadata {
     name = "ch-test-config"
@@ -76,6 +84,7 @@ resource "kubernetes_config_map" "ch_test_config" {
   }
 }
 
+# Kubernetes Secret for storing application sensitive data
 resource "kubernetes_secret" "ch_test_secret" {
   metadata {
     name = "ch-test-secret"
@@ -90,6 +99,7 @@ resource "kubernetes_secret" "ch_test_secret" {
   }
 }
 
+# Kubernetes Deployment resource for application
 resource "kubernetes_deployment" "ch_test" {
   metadata {
     name = "ch-test-deployment"
@@ -116,28 +126,7 @@ resource "kubernetes_deployment" "ch_test" {
           image = "${data.aws_ecr_repository.ch_test.repository_url}:${local.unique_tag}"
           name  = "ch-test"
 
-          env {
-            name = "QUEUE_TYPE"
-            value_from {
-              config_map_key_ref {
-                name = kubernetes_config_map.ch_test_config.metadata[0].name
-                key  = "QUEUE_TYPE"
-              }
-            }
-          }
-
-          env {
-            name = "AUTH_ACCESS_TOKEN_SECRET"
-            value_from {
-              secret_key_ref {
-                name = kubernetes_secret.ch_test_secret.metadata[0].name
-                key  = "AUTH_ACCESS_TOKEN_SECRET"
-              }
-            }
-          }
-
-          //////////
-
+          # Environment variables from ConfigMap and Secret
           env {
             name = "PORT"
             value_from {
@@ -333,6 +322,7 @@ resource "kubernetes_deployment" "ch_test" {
   }
 }
 
+# Kubernetes Service for exposing the application
 resource "kubernetes_service" "ch_test" {
   metadata {
     name = "ch-test-service"
@@ -348,6 +338,8 @@ resource "kubernetes_service" "ch_test" {
       target_port = 4000
     }
 
+    # Service is exposed externally using a cloud provider's load balancer
+    # Automatically routes traffic to the Service's Pods, distributing load across them
     type = "LoadBalancer"
   }
 }

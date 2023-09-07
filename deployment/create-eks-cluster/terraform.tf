@@ -1,11 +1,4 @@
 terraform {
-
-  cloud {
-    workspaces {
-      name = "test-terraform-eks"
-    }
-  }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
