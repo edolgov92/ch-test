@@ -343,37 +343,3 @@ resource "kubernetes_service" "ch_test" {
     type = "LoadBalancer"
   }
 }
-
-
-# Create a Kubernetes Ingress resource
-resource "kubernetes_ingress" "ch_test_ingress" {
-  metadata {
-    name = "ch-test-ingress"
-    annotations = {
-      # Specifies that this Ingress should be managed by the ALB Ingress Controller
-      "kubernetes.io/ingress.class" = "alb"
-
-      # Specifies that the ALB should be internet-facing (as opposed to internal)
-      "alb.ingress.kubernetes.io/scheme" = "internet-facing"
-    }
-  }
-  spec {
-    # Define a rule for how to handle incoming HTTP(S) traffic
-    rule {
-      # Hostname that should be listened to by the Ingress
-      host = "ch-test.produktexpo.com"
-      http {
-        # Define a path-based routing rule
-        path {
-          path     = "/"
-          
-          # Backend configuration to which the traffic should be routed
-          backend {
-            service_name = kubernetes_service.ch_test.metadata[0].name
-            service_port = 4000
-          }
-        }
-      }
-    }
-  }
-}
